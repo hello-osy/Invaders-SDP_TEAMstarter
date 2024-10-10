@@ -333,7 +333,7 @@ public class DrawManager {
 	 * @param option
 	 *            Option selected.
 	 */
-	public void drawMenu(final Screen screen, final int option, final int option2) {
+	public void drawMenu(final Screen screen, final int option, final int option2, final int option3) {
 		String onePlayerModeString = "1 player mode";
 		String twoPlayerModeString = "2 player mode";
 		String mode = onePlayerModeString;
@@ -341,7 +341,13 @@ public class DrawManager {
 		String highScoresString = "High scores";
 		String exitString = "exit";
 		String merchant = "Merchant";
-		AddSign addSign = new AddSign();
+		String bulletCountString = "bullet count up";
+		String shipSpeedString = "ship speed up";
+		String attackSpeedString = "attack speed up";
+		String coinGainString = "coin gain up";
+		String merchantState = merchant;
+
+        AddSign addSign = new AddSign();
 
 
 		// Play (starter)
@@ -371,14 +377,23 @@ public class DrawManager {
 		drawCenteredRegularString(screen, mode, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 4); // adjusted Height
 
-		if (option == 5)
+		if (option3 == 0) {merchantState = merchant;}
+		if (option3 == 1) {merchantState = bulletCountString;}
+		if (option3 == 2) {merchantState = shipSpeedString;}
+		if (option3 == 3) {merchantState = attackSpeedString;}
+		if (option3 == 4) {merchantState = coinGainString;}
+		if (option == 5) {merchantState = "<- " + merchantState + " ->";}
+		if (option == 5 && option3 == 0)
 			backBufferGraphics.setColor(Color.GREEN);
+		else if (option == 5 && option3 != 0)
+			backBufferGraphics.setColor(Color.CYAN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
-		drawCenteredRegularString(screen, merchant, screen.getHeight()
+
+		drawCenteredRegularString(screen, merchantState, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 6);
-		drawEntity(addSign, screen.getWidth()/2 + 50, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 6 - 12);
+		/*drawEntity(addSign, screen.getWidth()/2 + 50, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 6 - 12);*/
 
 
 		// Exit (starter)
