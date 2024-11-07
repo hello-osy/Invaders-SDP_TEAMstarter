@@ -2,6 +2,7 @@ package screen;
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import HUDTeam.DrawAchievementHud;
@@ -9,14 +10,19 @@ import HUDTeam.DrawManagerImpl;
 import clove.Achievement;
 import engine.Core;
 import engine.Score;
+import clove.AchievementConditions;
+import clove.AchievementManager;
 // Sound Operator
 import Sound_Operator.SoundManager;
+
+
 
 
 public class AchievementScreen extends Screen {
 
     /** List of past high scores. */
-    private List<Achievement> achievements;
+    private ArrayList<Achievement> achievements;
+    private ArrayList<String> unlockedachivements;
 
     /**
      * Constructor, establishes the properties of the screen.
@@ -28,7 +34,7 @@ public class AchievementScreen extends Screen {
      * @param fps
      *            Frames per second, frame rate at which the game is run.
      */
-    public AchievementScreen(final int width, final int height, final int fps) {
+    public AchievementScreen(final int width, final int height, final int fps, AchievementManager achievementManager) {
         super(width, height, fps);
 
         this.returnCode = 1;
@@ -36,8 +42,10 @@ public class AchievementScreen extends Screen {
         // Sound Operator
         SoundManager.getInstance().playBGM("highScore_bgm");
 
+        this.achievements = (ArrayList<Achievement>) achievementManager.getAllAchievement();
+        this.unlockedachivements = (ArrayList<String>) achievementManager.getUnlockedAchievement();
 //        try {
-//            this.highScores = Core.getFileManager().loadHighScores();
+//            this.achievements =
 //        } catch (NumberFormatException | IOException e) {
 //            logger.warning("Couldn't load high scores!");
 //        }
@@ -74,7 +82,7 @@ public class AchievementScreen extends Screen {
 
 
         drawManager.drawAchievementMenu(this);
-//        drawManager.drawHighScores(this, this.highScores);
+        drawManager.drawAchievement(this, this.achievements, this.unlockedachivements);
 
         super.drawPost();
         drawManager.completeDrawing(this);
