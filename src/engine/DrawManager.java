@@ -382,12 +382,14 @@ public class DrawManager {
 	 * @param option Option selected.
 	 */
 	public void drawMenu(final Screen screen, final int option, final int option2, final int option3) {
+		String tutorialString = "Tutorial";
 		String onePlayerModeString = "1 player mode";
 		String twoPlayerModeString = "2 player mode";
 		String mode = onePlayerModeString;
 		String RecentRecord = "Recent Records";
 		String merchantString = "merchant";
 		String highScoresString = "High scores";
+		String achievementString = "Achivements";
 		String exitString = "exit";
 
         // AddSign addSign = new AddSign();
@@ -411,7 +413,7 @@ public class DrawManager {
 		if (option2 == 1) {mode = twoPlayerModeString;} // 2 player mode (Starter), default: 1 player mode
 		if (option == 3) {mode = "<- " + mode + " ->";}
 		drawCenteredRegularString(screen, mode, screen.getHeight()
-				/ 4 * 2); // adjusted Height
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 2); // adjusted Height
 
 		// High scores (Starter)
 		if (option == 4)

@@ -199,11 +199,11 @@ public final class Core {
                     LOGGER.info("Closing title screen.");
                     break;
 
-                case 2: // Tutorial
-                    currentScreen = new TutorialScreen(width, height, FPS);
-                    currentScreen.initialize();
-                    returnCode = currentScreen.run();
-                    break;
+//                case 2: // Tutorial
+//                    currentScreen = new TutorialScreen(width, height, FPS);
+//                    currentScreen.initialize();
+//                    returnCode = currentScreen.run();
+//                    break;
 
                 case 3:
                     // Game & score.
@@ -318,6 +318,14 @@ public final class Core {
                     LOGGER.info("Closing recent record screen.");
                     break;
                 case 7:
+                    currentScreen = new AchievementScreen(width, height, FPS, achievementManager);
+                    LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
+                            + " achievements screen at " + FPS + " fps.");
+                    returnCode = frame.setScreen(currentScreen);
+                    LOGGER.info("Closing achievements screen.");
+                    break;
+
+                case 8:
                     LOGGER.info("Starting inGameBGM");
                     // Sound Operator
                     sm.playES("start_button_ES");

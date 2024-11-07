@@ -82,8 +82,8 @@ public class TitleScreen extends Screen {
 		super.run();
 
 		// produced by Starter
-		if (this.pnumSelectionCode == 1 && this.returnCode == 2){
-			return 7;
+		if (this.pnumSelectionCode == 1 && this.returnCode == 3){
+			return 8;
 		}
 
 		return this.returnCode;
@@ -114,7 +114,7 @@ public class TitleScreen extends Screen {
 			}
 
 			// produced by Starter
-			if (returnCode == 2) {
+			if (returnCode == 3) {
 				if (inputManager.isKeyDown(KeyEvent.VK_LEFT)
 						|| inputManager.isKeyDown(KeyEvent.VK_A)) {
 					moveMenuLeft();
@@ -183,7 +183,7 @@ public class TitleScreen extends Screen {
 
 	// left and right move -- produced by Starter
 	private void moveMenuLeft() {
-		if (this.returnCode == 2 ) {
+		if (this.returnCode == 3 ) {
 			if (this.pnumSelectionCode == 0)
 				this.pnumSelectionCode++;
 			else
@@ -193,7 +193,7 @@ public class TitleScreen extends Screen {
 	}
 
 	private void moveMenuRight() {
-		if (this.returnCode == 2) {
+		if (this.returnCode == 3) {
 			if (this.pnumSelectionCode == 0)
 				this.pnumSelectionCode++;
 			else
