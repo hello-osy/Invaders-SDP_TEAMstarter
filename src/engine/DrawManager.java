@@ -383,17 +383,11 @@ public class DrawManager {
 		String twoPlayerModeString = "2 player mode";
 		String mode = onePlayerModeString;
 		String RecentRecord = "Recent Records";
-		String playString = "Play";
+		String merchantString = "merchant";
 		String highScoresString = "High scores";
 		String exitString = "exit";
-		String merchant = "Merchant";
-		String bulletCountString = String.format("bullet count up"); // Starter
-		String shipSpeedString = String.format("ship speed up"); // Starter
-		String attackSpeedString = String.format("attack speed up"); // Starter
-		String coinGainString = String.format("coin gain up"); // Starter
-		String merchantState = merchant;
 
-        AddSign addSign = new AddSign();
+        // AddSign addSign = new AddSign();
 
 
 		// Play (Starter)
@@ -416,35 +410,14 @@ public class DrawManager {
 		drawCenteredRegularString(screen, highScoresString, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 2); // adjusted Height
 
-		if (option3 == 0) {merchantState = merchant;}
-		try {
-			if (option3 == 1) {
-				merchantState = bulletCountString + MerchantTxt(Core.getUpgradeManager().getBulletCount(),1);
-			}
-			if (option3 == 2) {
-				merchantState = shipSpeedString + MerchantTxt(Core.getUpgradeManager().getSpeedCount(),2);
-			}
-			if (option3 == 3) {
-				merchantState = attackSpeedString + MerchantTxt(Core.getUpgradeManager().getAttackCount(),3);
-			}
-			if (option3 == 4) {
-				merchantState = coinGainString + MerchantTxt(Core.getUpgradeManager().getCoinCount(),4);
-			}
-			if (option == 4) {
-				merchantState = "<- " + merchantState + " ->";
-			}
-		} catch (IOException e){
-			throw new RuntimeException(e);
-		}
 
-		if (option == 4 && option3 == 0)
+
+		if (option == 4)
 			backBufferGraphics.setColor(Color.GREEN);
-		else if (option == 4 && option3 != 0)
-			backBufferGraphics.setColor(Color.CYAN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 
-		drawCenteredRegularString(screen, merchantState, screen.getHeight()
+		drawCenteredRegularString(screen, merchantString, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 4);
 		/*drawEntity(addSign, screen.getWidth()/2 + 50, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 6 - 12);*/
@@ -465,6 +438,80 @@ public class DrawManager {
 		drawCenteredRegularString(screen, exitString, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 10); // adjusted Height
 	}
+
+	public void drawMerchantTitle(final Screen screen, final int option) {
+		String MerchantString = "Merchant";
+		String countAndPriceString = "";
+		try {
+			if (option == 1) {
+				countAndPriceString = "Upgrade" + MerchantTxt(Core.getUpgradeManager().getBulletCount(),1);
+			}
+			if (option == 2) {
+				countAndPriceString = "Upgrade" + MerchantTxt(Core.getUpgradeManager().getSpeedCount(),2);
+			}
+			if (option == 3) {
+				countAndPriceString = "Upgrade" + MerchantTxt(Core.getUpgradeManager().getAttackCount(),3);
+			}
+			if (option == 4) {
+				countAndPriceString = "Upgrade" + MerchantTxt(Core.getUpgradeManager().getCoinCount(),4);
+			}
+		} catch (IOException e){
+			throw new RuntimeException(e);
+		}
+
+		backBufferGraphics.setColor(Color.CYAN);
+		drawCenteredBigString(screen, countAndPriceString,
+				screen.getHeight() * 4 / 12);
+
+		backBufferGraphics.setColor(Color.CYAN);
+		drawCenteredBigString(screen, MerchantString, screen.getHeight() / 4);
+	}
+
+	public void drawMerchantMenu(final Screen screen, final int option) {
+		String goMainString = "Go main";
+		String bulletCountString = String.format("bullet count up"); // Starter
+		String shipSpeedString = String.format("ship speed up"); // Starter
+		String attackSpeedString = String.format("attack speed up"); // Starter
+		String coinGainString = String.format("coin gain up"); // Starter
+
+		if (option == 1)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, bulletCountString, screen.getHeight()
+				/ 4 * 2);
+
+		if (option == 2)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, shipSpeedString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 2); // adjusted Height
+
+		if (option == 3)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, attackSpeedString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 4); // adjusted Height
+
+		if (option == 4)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, coinGainString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 6); // adjusted Height
+
+		// Go main
+		if (option == 0)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, goMainString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 10); // adjusted Height
+	}
+
+
 
 	/**
 	 * Draws game results.
