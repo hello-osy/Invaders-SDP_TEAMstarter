@@ -16,6 +16,16 @@ public abstract class Entity {
 	protected int positionX;
 	/** Position in the y-axis of the upper left corner of the entity. */
 	protected int positionY;
+	/** Velocity in the x-axis of the upper left corner of the entity. */
+	protected double velocityX;
+	/** Velocity in the y-axis of the upper left corner of the entity. */
+	protected double velocityY;
+	/** Acceleration in the x-axis of the upper left corner of the entity. */
+	protected double accelX;
+	/** Acceleration in the y-axis of the upper left corner of the entity. */
+	protected double accelY;
+	/** Mass of the entity. */
+	protected double mass;
 	/** Width of the entity. */
 	protected int width;
 	/** Height of the entity. */
@@ -48,6 +58,10 @@ public abstract class Entity {
 			final int height, final Color color) {
 		this.positionX = positionX;
 		this.positionY = positionY;
+		this.velocityX = 0;
+		this.velocityY = 0;
+		this.accelX = 0;
+		this.accelY = 0;
 		this.width = width;
 		this.height = height;
 		this.color = color;
