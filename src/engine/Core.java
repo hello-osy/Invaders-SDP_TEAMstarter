@@ -199,11 +199,11 @@ public final class Core {
                     LOGGER.info("Closing title screen.");
                     break;
 
-//                case 2: // Tutorial
-//                    currentScreen = new TutorialScreen(width, height, FPS);
-//                    currentScreen.initialize();
-//                    returnCode = currentScreen.run();
-//                    break;
+                case 2: // Tutorial
+                    currentScreen = new TutorialScreen(width, height, FPS);
+                    currentScreen.initialize();
+                    returnCode = currentScreen.run();
+                    break;
 
                 case 3:
                     // Game & score.
