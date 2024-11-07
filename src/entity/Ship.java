@@ -74,7 +74,7 @@ public class Ship extends Entity {
 	 * reached.
 	 */
 	public final void moveRight() {
-		this.accelX = .3 + growth.getMoveSpeed() * 0.4;
+		this.accelX = .1 + growth.getMoveSpeed() * 0.3;
 //		this.positionX += growth.getMoveSpeed(); //  Use PlayerGrowth for movement speed
 	} //Edit by Enemy
 
@@ -84,7 +84,7 @@ public class Ship extends Entity {
 	 * reached.
 	 */
 	public final void moveLeft() {
-		this.accelX = -.3 - growth.getMoveSpeed() * 0.4;
+		this.accelX = -.1 - growth.getMoveSpeed() * 0.3;
 //		this.positionX -= growth.getMoveSpeed(); // Use PlayerGrowth for movement speed
 	} //Edit by Enemy
 

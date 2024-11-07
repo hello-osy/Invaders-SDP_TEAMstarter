@@ -29,6 +29,7 @@ public class Obstacle extends Entity {
         this.spriteType = SpriteType.Obstacle; // Ensure it's an obstacle shape sprite type
         this.isDestroyed = false;
         this.movementCooldown = Core.getCooldown(500); // Adjust the cooldown for obstacle movement
+        this.accelY = 0.04; // Set initial acceleration
     }
     
     /**
@@ -47,9 +48,9 @@ public class Obstacle extends Entity {
     */
     public final void update(int level) {
         if (!this.isDestroyed) {
-            // Set speed based on the level
-            int speed = 2 + (level / 2);  // Adjust so it increases by 1 every two levels
-            this.positionY += speed; // Moves the obstacle down continuously
+            // Need to set speed based on the level
+            this.velocityY += this.accelY;
+            this.positionY += (int) this.velocityY; // Moves the obstacle down continuously
         } else {
             // If destroyed, check if the explosion animation should finish
             if (this.explosionCooldown != null && this.explosionCooldown.checkFinished()) {

@@ -9,9 +9,13 @@ import inventory_develop.ShipStatus;
 public class Item extends Entity {
     private final ShipStatus shipStatus = new ShipStatus();
     private int speed;
+    private double velocityY;
+    private double accelY;
     public Item(final int positionX, final int positionY, final int speed, final int type) {
         super(positionX, positionY, 3 * 2, 5 * 2, Color.yellow);
         this.speed = speed;
+        this.velocityY = -2.4;
+        this.accelY = 0.08;
         setSprite();
     }
 
@@ -58,7 +62,9 @@ public class Item extends Entity {
     }
 
     public final void update() {
-        this.positionY += this.speed;
+        this.velocityY += accelY;
+        this.positionY += (int) this.velocityY;
+//        this.positionY += this.speed;
     }
     public final void setSpeed(final int speed) {
         this.speed = speed;
