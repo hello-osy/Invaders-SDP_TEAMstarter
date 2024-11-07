@@ -198,7 +198,14 @@ public final class Core {
                     returnCode = frame.setScreen(currentScreen);
                     LOGGER.info("Closing title screen.");
                     break;
-                case 2:
+
+                case 2: // Tutorial
+                    currentScreen = new TutorialScreen(width, height, FPS);
+                    currentScreen.initialize();
+                    returnCode = currentScreen.run();
+                    break;
+
+                case 3:
                     // Game & score.
                     LOGGER.info("Starting inGameBGM");
                     // Sound Operator
@@ -286,7 +293,7 @@ public final class Core {
                     returnCode = frame.setScreen(currentScreen);
                     LOGGER.info("Closing score screen.");
                     break;
-                case 3:
+                case 4:
                     // High scores.
                     currentScreen = new HighScoreScreen(width, height, FPS);
                     LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
@@ -294,7 +301,7 @@ public final class Core {
                     returnCode = frame.setScreen(currentScreen);
                     LOGGER.info("Closing high score screen.");
                     break;
-                case 4:
+                case 5:
                     // Main menu.
                     currentScreen = new MerchantScreen(width, height, FPS);
                     LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
@@ -302,7 +309,7 @@ public final class Core {
                     returnCode = frame.setScreen(currentScreen);
                     LOGGER.info("Closing Merchant screen.");
                     break;
-                case 5: // 7 -> 5 replaced by Starter
+                case 6: // 7 -> 5 replaced by Starter
                     // Recent Records.
                     currentScreen = new RecordScreen(width, height, FPS);
                     LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
@@ -310,7 +317,7 @@ public final class Core {
                     returnCode = frame.setScreen(currentScreen);
                     LOGGER.info("Closing recent record screen.");
                     break;
-                case 6:
+                case 7:
                     LOGGER.info("Starting inGameBGM");
                     // Sound Operator
                     sm.playES("start_button_ES");
