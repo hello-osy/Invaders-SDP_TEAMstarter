@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="Merge conflict resolved">
+    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/backgrounds/background_level_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/res/backgrounds/background_level_1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/backgrounds/background_level_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/res/backgrounds/background_level_2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/backgrounds/background_level_3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/res/backgrounds/background_level_3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/backgrounds/background_level_4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/res/backgrounds/background_level_4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/backgrounds/background_level_5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/res/backgrounds/background_level_5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/backgrounds/background_level_7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/res/backgrounds/background_level_7.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/DrawManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/DrawManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screen/TitleScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/screen/TitleScreen.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="396987038fe7532e22eb7a49fe792f90a88c8916" />
+        <entry key="$PROJECT_DIR$" value="feature/background" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +53,7 @@
   "keyToString": {
     "Application.Core.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "480ce71d",
+    "git-widget-placeholder": "feature/graphics",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/OSYSTUDY/241018/Invaders-SDP_TEAMstarter",
     "node.js.detected.package.eslint": "true",
@@ -86,11 +91,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.Core" />
-        <item itemvalue="애플리케이션.Core" />
-        <item itemvalue="애플리케이션.Core" />
-        <item itemvalue="애플리케이션.Core" />
-        <item itemvalue="애플리케이션.Core" />
+          <item itemvalue="애플리케이션.Core" />
       </list>
     </recent_temporary>
   </component>
@@ -146,19 +147,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="feature/graphics" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
         <entry key="d8a76686-41bf-4f81-bdf0-ee761e77b1ae">
@@ -188,9 +177,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge conflict resolved" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge conflict resolved" />
   </component>
 </project>

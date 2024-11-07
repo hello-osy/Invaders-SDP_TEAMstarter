@@ -25,16 +25,15 @@ import level_design.Background;
 
 import javax.imageio.ImageIO;
 
-
 import clove.Achievement;
 import java.util.ArrayList;
 
 /**
- * Manages screen drawing.
- *
- * @author <a href="mailto:RobertoIA1987@gmail.com">Roberto Izquierdo Amo</a>
- *
- */
+* Manages screen drawing.
+*
+* @author <a href="mailto:RobertoIA1987@gmail.com">Roberto Izquierdo Amo</a>
+*
+*/
 public class DrawManager {
 
 	/** Singleton instance of the class. */
@@ -105,7 +104,7 @@ public class DrawManager {
 		Boss, // by enemy team
 		/** Player Lives. */
 		/** Item */
-		ItemHeart,
+    	ItemHeart,
 		ShipBarrierStatus,
 		ItemCoin,
 		ItemPierce,
@@ -114,23 +113,23 @@ public class DrawManager {
 		ItemFeverTime,
 		// Produced by Starter Team
 
-		// Produced by Starter Team
+        // Produced by Starter Team
 		/** coin */
 		Coin,
 		/** add sign */
 		AddSign,
 		/** Gem - Added by CtrlS */
 		Gem,
-		ItemSpeedUp, ItemSpeedSlow, Obstacle
+        ItemSpeedUp, ItemSpeedSlow, Obstacle
 
 	};
 
 	/**
-	 * Private constructor.
-	 *
-	 * Modifying Access Restrictor to public
-	 * - HUDTeam - LeeHyunWoo
-	 */
+	* Private constructor.
+	*
+	* Modifying Access Restrictor to public
+	* - HUDTeam - LeeHyunWoo
+	*/
 	public DrawManager() {
 		fileManager = Core.getFileManager();
 		logger = Core.getLogger();
@@ -252,7 +251,7 @@ public class DrawManager {
 	 *            Coordinates for the upper side of the image.
 	 */
 	public static void drawEntity(final Entity entity, final int positionX,
-								  final int positionY) {
+						   final int positionY) {
 
 		try {
 			boolean[][] image = spriteMap.get(entity.getSpriteType());
@@ -389,58 +388,65 @@ public class DrawManager {
 		String RecentRecord = "Recent Records";
 		String merchantString = "merchant";
 		String highScoresString = "High scores";
-		String achievementString = "Achivements";
 		String exitString = "exit";
 
-		// AddSign addSign = new AddSign();
+        // AddSign addSign = new AddSign();
 
 
-		// Play (Starter)
-		if (option == 2 && option2 == 0)
+		// Tutorial
+		if (option == 2)
+			backBufferGraphics.setColor(Color.GREEN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, tutorialString, screen.getHeight()
+				/ 4 * 2);
+
+		// Play
+		if (option == 3 && option2 == 0)
 			backBufferGraphics.setColor(Color.CYAN);
-		else if (option == 2 && option2 == 1)
+		else if (option == 3 && option2 == 1)
 			backBufferGraphics.setColor(Color.MAGENTA);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 		if (option2 == 1) {mode = twoPlayerModeString;} // 2 player mode (Starter), default: 1 player mode
-		if (option == 2) {mode = "<- " + mode + " ->";}
+		if (option == 3) {mode = "<- " + mode + " ->";}
 		drawCenteredRegularString(screen, mode, screen.getHeight()
 				/ 4 * 2); // adjusted Height
 
 		// High scores (Starter)
-		if (option == 3)
+		if (option == 4)
 			backBufferGraphics.setColor(Color.GREEN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, highScoresString, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 2); // adjusted Height
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 4); // adjusted Height
 
 
 
-		if (option == 4)
+		if (option == 5)
 			backBufferGraphics.setColor(Color.GREEN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 
 		drawCenteredRegularString(screen, merchantString, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 4);
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 6);
 		/*drawEntity(addSign, screen.getWidth()/2 + 50, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 6 - 12);*/
 
-		// Record scores (Team Clove)
-		if (option == 5)
-			backBufferGraphics.setColor(Color.GREEN);
-		else
-			backBufferGraphics.setColor(Color.WHITE);
-		drawCenteredRegularString(screen, RecentRecord, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 6); // adjusted Height
+        // Record scores (Team Clove)
+        if (option == 6)
+            backBufferGraphics.setColor(Color.GREEN);
+        else
+            backBufferGraphics.setColor(Color.WHITE);
+        drawCenteredRegularString(screen, RecentRecord, screen.getHeight()
+                / 4 * 2 + fontRegularMetrics.getHeight() * 8); // adjusted Height
 
-		if (option == 6)
+		if (option == 7)
 			backBufferGraphics.setColor(Color.GREEN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, achievementString, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 8); // adjusted Height
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 10); // adjusted Height
 
 		// Exit (Starter)
 		if (option == 0)
@@ -448,7 +454,7 @@ public class DrawManager {
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, exitString, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 10); // adjusted Height
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 12); // adjusted Height
 	}
 
 	public void drawMerchantTitle(final Screen screen, final int option) {
@@ -693,18 +699,6 @@ public class DrawManager {
 				screen.getHeight() / 5);
 	}
 
-	public void drawAchievementMenu(final Screen screen) {
-		String recentScoreString = "Achievement";
-		String instructionsString = "Press Space to return";
-
-		backBufferGraphics.setColor(Color.GREEN);
-		drawCenteredBigString(screen, recentScoreString, screen.getHeight() / 8);
-
-		backBufferGraphics.setColor(Color.GRAY);
-		drawCenteredRegularString(screen, instructionsString,
-				screen.getHeight() / 5);
-	}
-
 	/**
 	 * Draws high scores.
 	 *
@@ -713,8 +707,6 @@ public class DrawManager {
 	 * @param highScores
 	 *            List of high scores.
 	 */
-
-
 	public void drawHighScores(final Screen screen,
 							   final List<Score> highScores) {
 		backBufferGraphics.setColor(Color.WHITE);
@@ -729,6 +721,18 @@ public class DrawManager {
 			i++;
 		}
 	}
+
+    public void drawAchievementMenu(final Screen screen) {
+        String recentScoreString = "Achievement";
+        String instructionsString = "Press Space to return";
+
+        backBufferGraphics.setColor(Color.GREEN);
+        drawCenteredBigString(screen, recentScoreString, screen.getHeight() / 8);
+
+        backBufferGraphics.setColor(Color.GRAY);
+        drawCenteredRegularString(screen, instructionsString,
+                screen.getHeight() / 5);
+    }
 
 	/**
 	 * Draws recent scores.
@@ -1000,9 +1004,9 @@ public class DrawManager {
 		backBufferGraphics.drawString(Integer.toString(gem), coinX + gemImage.getWidth() + 10, 35);
 	}
 	/**
-	 * ### TEAM INTERNATIONAL ###
-	 * Background draw and update method
-	 */
+	* ### TEAM INTERNATIONAL ###
+	* Background draw and update method
+	*/
 
 	public void loadBackground(int levelNumber) {
 		background = Background.getInstance();
@@ -1025,29 +1029,29 @@ public class DrawManager {
 	}
 
 	/**
-	 * ### TEAM INTERNATIONAL ###
-	 *
-	 * Wave draw method
-	 * **/
+	* ### TEAM INTERNATIONAL ###
+	*
+	* Wave draw method
+	* **/
 	public void drawWave(final Screen screen, final int wave, final int number) {
 		int rectWidth = screen.getWidth();
 		int rectHeight = screen.getHeight() / 6;
 		backBufferGraphics.setColor(Color.BLACK);
 		backBufferGraphics.fillRect(0, screen.getHeight() / 2 - rectHeight / 2,
-				rectWidth, rectHeight);
+		rectWidth, rectHeight);
 		backBufferGraphics.setColor(Color.GREEN);
 		if (number >= 4)
 
-			drawCenteredBigString(screen, "Wave " + wave,
-					screen.getHeight() / 2
-							+ fontBigMetrics.getHeight() / 3);
+		drawCenteredBigString(screen, "Wave " + wave,
+		screen.getHeight() / 2
+		+ fontBigMetrics.getHeight() / 3);
 
 		else if (number != 0)
-			drawCenteredBigString(screen, Integer.toString(number),
-					screen.getHeight() / 2 + fontBigMetrics.getHeight() / 3);
+		drawCenteredBigString(screen, Integer.toString(number),
+		screen.getHeight() / 2 + fontBigMetrics.getHeight() / 3);
 		else
-			drawCenteredBigString(screen, "GO!", screen.getHeight() / 2
-					+ fontBigMetrics.getHeight() / 3);
+		drawCenteredBigString(screen, "GO!", screen.getHeight() / 2
+		+ fontBigMetrics.getHeight() / 3);
 	}
 
 
