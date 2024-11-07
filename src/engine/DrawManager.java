@@ -8,7 +8,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +15,6 @@ import java.util.logging.Logger;
 
 import CtrlS.RoundState;
 import CtrlS.Gem;
-import clove.Achievement;
 import entity.AddSign;
 import entity.Coin;
 import inventory_develop.Bomb;
@@ -394,7 +392,6 @@ public class DrawManager {
 		String attackSpeedString = String.format("attack speed up"); // Starter
 		String coinGainString = String.format("coin gain up"); // Starter
 		String merchantState = merchant;
-		String AchievementString = "Achievement"; // Hong
 
         AddSign addSign = new AddSign();
 
@@ -459,14 +456,6 @@ public class DrawManager {
             backBufferGraphics.setColor(Color.WHITE);
         drawCenteredRegularString(screen, RecentRecord, screen.getHeight()
                 / 4 * 2 + fontRegularMetrics.getHeight() * 6); // adjusted Height
-
-		// Record scores (Team Clove)
-		if (option == 6)
-			backBufferGraphics.setColor(Color.GREEN);
-		else
-			backBufferGraphics.setColor(Color.WHITE);
-		drawCenteredRegularString(screen, AchievementString, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 8); // adjusted Height
 
         // Exit (Starter)
 		if (option == 0)
@@ -646,27 +635,6 @@ public class DrawManager {
 	}
 
 	/**
-	 * Draws Achievement screen title and instructions.
-	 *
-	 * @param screen
-	 *            Screen to draw on.
-	 * Hong
-	 */
-	public void drawAchievementMenu(final Screen screen) {
-		String recentScoreString = "Achievement";
-		String instructionsString = "Press Space to return";
-
-		backBufferGraphics.setColor(Color.GREEN);
-		drawCenteredBigString(screen, recentScoreString, screen.getHeight() / 8);
-
-		backBufferGraphics.setColor(Color.GRAY);
-		drawCenteredRegularString(screen, instructionsString,
-				screen.getHeight() / 5);
-	}
-
-
-
-	/**
 	 * Draws high scores.
 	 *
 	 * @param screen
@@ -727,46 +695,6 @@ public class DrawManager {
 			for(int k=0; k<4; k++){
 				drawRightedRegularString(screen, Instance[k], instanceXPostition[k],
 						screen.getHeight() / 4 + fontRegularMetrics.getHeight() * (i + 1) * 2);
-			}
-			i++;
-		}
-	}
-
-	public void drawAchievement(final Screen screen,
-							   final ArrayList<Achievement> achievements,
-								final ArrayList<String> unlokedachievements) {
-		backBufferGraphics.setColor(Color.MAGENTA);
-
-		int i = 0;
-		boolean isFirstLine = true;
-		int[] attributeXPosition = {50, 280, 540, 380};
-		int[] instanceXPostition = {25, 250, 550, 400 };
-
-		if (isFirstLine) { // Create Header
-			String[] Attribute = {"Name", "Discirption", "Gem", };
-			for(int k=0; k<3; k++){
-				drawRightedRegularString(screen, Attribute[k], attributeXPosition[k],
-						screen.getHeight() / 4 + fontRegularMetrics.getHeight() * (i + 1) );
-			}
-			isFirstLine = false;
-
-			i++;
-		}
-
-		for (Achievement achievement : achievements) {
-			backBufferGraphics.setColor(Color.WHITE);
-			if(unlokedachievements.contains(achievement.getAchievementName())){
-				backBufferGraphics.setColor(Color.CYAN);
-			}
-			String[] Instance = new String[3];
-			Instance[0] = String.format("%s",achievement.getAchievementName());
-			Instance[1] = String.format("%s",achievement.getAchievementDescription() );
-			Instance[2] = String.format("%d",achievement.getGem());
-
-
-			for(int k=0; k<3; k++){
-				drawRightedRegularString(screen, Instance[k], instanceXPostition[k],
-						screen.getHeight() / 4 + fontRegularMetrics.getHeight() * (i + 1) * 5 / 4 );
 			}
 			i++;
 		}

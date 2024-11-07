@@ -83,7 +83,7 @@ public class TitleScreen extends Screen {
 
 		// produced by Starter
 		if (this.pnumSelectionCode == 1 && this.returnCode == 2){
-			return 4; //return 4 instead of 2
+			return 6;
 		}
 
 		return this.returnCode;
@@ -131,30 +131,8 @@ public class TitleScreen extends Screen {
 				}
 			}
 
-			if(returnCode == 4) {
-				if (inputManager.isKeyDown(KeyEvent.VK_LEFT)
-						|| inputManager.isKeyDown(KeyEvent.VK_A)) {
-					nextMerchantState();
-					this.selectionCooldown.reset();
-					// Sound Operator
-					SoundManager.getInstance().playES("menuSelect_es");
-				}
-				if (inputManager.isKeyDown(KeyEvent.VK_RIGHT)
-						|| inputManager.isKeyDown(KeyEvent.VK_D)) {
-					previousMerchantState();
-					this.selectionCooldown.reset();
-					// Sound Operator
-					SoundManager.getInstance().playES("menuSelect_es");
-				}
-
-			}
-
 			if (inputManager.isKeyDown(KeyEvent.VK_SPACE))
-				if(returnCode == 4) {
-					testStatUpgrade();
-                    this.selectionCooldown.reset();
-				}
-				else this.isRunning = false;
+				this.isRunning = false;
 		}
 	}
 	// Use later if needed. -Starter
@@ -180,125 +158,7 @@ public class TitleScreen extends Screen {
 	 * Shifts the focus to the next menu item.
 	 */
 	
-	private void testStatUpgrade() {
-		// CtrlS: testStatUpgrade should only be called after coins are spent
-		if (this.merchantState == 1) { // bulletCount
-			try {
-				if (Core.getUpgradeManager().LevelCalculation(Core.getUpgradeManager().getBulletCount()) > 3){
-					Core.getLogger().info("The level is already Max!");
-				}
 
-				else if (!(Core.getUpgradeManager().getBulletCount() % 2 == 0)
-						&& Core.getCurrencyManager().spendCoin(Core.getUpgradeManager().Price(1))) {
-
-					Core.getUpgradeManager().addBulletNum();
-					Core.getLogger().info("Bullet Number: " + Core.getUpgradeManager().getBulletNum());
-
-					Core.getUpgradeManager().addBulletCount();
-
-				} else if ((Core.getUpgradeManager().getBulletCount() % 2 == 0)
-						&& Core.getCurrencyManager().spendGem((Core.getUpgradeManager().getBulletCount() + 1) * 10)) {
-
-					Core.getUpgradeManager().addBulletCount();
-					Core.getLogger().info("Upgrade has been unlocked");
-
-				} else {
-					Core.getLogger().info("you don't have enough");
-				}
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		} else if (this.merchantState == 2) { // shipSpeed
-			try {
-				if (Core.getUpgradeManager().LevelCalculation(Core.getUpgradeManager().getSpeedCount()) > 10){
-					Core.getLogger().info("The level is already Max!");
-				}
-
-				else if (!(Core.getUpgradeManager().getSpeedCount() % 4 == 0)
-						&& Core.getCurrencyManager().spendCoin(Core.getUpgradeManager().Price(2))) {
-
-					Core.getUpgradeManager().addMovementSpeed();
-					Core.getLogger().info("Movement Speed: " + Core.getUpgradeManager().getMovementSpeed());
-
-					Core.getUpgradeManager().addSpeedCount();
-
-				} else if ((Core.getUpgradeManager().getSpeedCount() % 4 == 0)
-						&& Core.getCurrencyManager().spendGem(Core.getUpgradeManager().getSpeedCount() / 4 * 5)) {
-
-					Core.getUpgradeManager().addSpeedCount();
-					Core.getLogger().info("Upgrade has been unlocked");
-
-				} else {
-					Core.getLogger().info("you don't have enough");
-				}
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		} else if (this.merchantState == 3) { // attackSpeed
-			try {
-				if (Core.getUpgradeManager().LevelCalculation(Core.getUpgradeManager().getAttackCount()) > 10){
-					Core.getLogger().info("The level is already Max!");
-				}
-
-				else if (!(Core.getUpgradeManager().getAttackCount() % 4 == 0)
-						&& Core.getCurrencyManager().spendCoin(Core.getUpgradeManager().Price(3))) {
-
-					Core.getUpgradeManager().addAttackSpeed();
-					Core.getLogger().info("Attack Speed: " + Core.getUpgradeManager().getAttackSpeed());
-
-					Core.getUpgradeManager().addAttackCount();
-
-				} else if ((Core.getUpgradeManager().getAttackCount() % 4 == 0)
-						&& Core.getCurrencyManager().spendGem(Core.getUpgradeManager().getAttackCount() / 4 * 5)) {
-
-					Core.getUpgradeManager().addAttackCount();
-					Core.getLogger().info("Upgrade has been unlocked");
-
-				} else {
-					Core.getLogger().info("you don't have enough");
-				}
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		} else if (this.merchantState == 4) { // coinGain
-			try {
-				if (Core.getUpgradeManager().LevelCalculation(Core.getUpgradeManager().getCoinCount()) > 10){
-					Core.getLogger().info("The level is already Max!");
-				}
-
-				else if (!(Core.getUpgradeManager().getCoinCount() % 4 == 0)
-						&& Core.getCurrencyManager().spendCoin(Core.getUpgradeManager().Price(4))) {
-
-					Core.getUpgradeManager().addCoinAcquisitionMultiplier();
-					Core.getLogger().info("CoinBonus: " + Core.getUpgradeManager().getCoinAcquisitionMultiplier());
-
-					Core.getUpgradeManager().addCoinCount();
-
-				} else if ((Core.getUpgradeManager().getCoinCount() % 4 == 0)
-						&& Core.getCurrencyManager().spendGem(Core.getUpgradeManager().getCoinCount() / 4 * 5)) {
-
-					Core.getUpgradeManager().addCoinCount();
-					Core.getLogger().info("Upgrade has been unlocked");
-
-				} else {
-					Core.getLogger().info("you don't have enough");
-				}
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-
-		}
-		try{
-			this.coin = Core.getCurrencyManager().getCoin();
-			this.gem = Core.getCurrencyManager().getGem();
-
-		} catch (IOException e){
-			throw new RuntimeException(e);
-		}
-	}
 	private void nextMenuItem() {
 		if (this.returnCode == 6) // Hong changed values because Achievement added
 			this.returnCode = 0; // from '2 player mode' to 'Exit' (Starter)
@@ -340,25 +200,6 @@ public class TitleScreen extends Screen {
 				this.pnumSelectionCode--;
 		}
 	}
-
-	private void nextMerchantState() {
-		if (this.returnCode == 4) {
-			if (this.merchantState == 4)
-				this.merchantState = 0;
-			else
-				this.merchantState++;
-		}
-	}
-
-	private void previousMerchantState() {
-		if (this.returnCode == 4) {
-			if (this.merchantState == 0)
-				this.merchantState = 4;
-			else
-				this.merchantState--;
-		}
-	}
-
 	/**
 	 * Draws the elements associated with the screen.
 	 */
