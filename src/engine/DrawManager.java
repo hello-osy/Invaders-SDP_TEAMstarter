@@ -392,6 +392,7 @@ public class DrawManager {
 		String attackSpeedString = String.format("attack speed up"); // Starter
 		String coinGainString = String.format("coin gain up"); // Starter
 		String merchantState = merchant;
+		String AchievementString = "Achievement"; // Hong
 
         AddSign addSign = new AddSign();
 
@@ -456,6 +457,14 @@ public class DrawManager {
             backBufferGraphics.setColor(Color.WHITE);
         drawCenteredRegularString(screen, RecentRecord, screen.getHeight()
                 / 4 * 2 + fontRegularMetrics.getHeight() * 6); // adjusted Height
+
+		// Record scores (Team Clove)
+		if (option == 6)
+			backBufferGraphics.setColor(Color.GREEN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, AchievementString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 8); // adjusted Height
 
         // Exit (Starter)
 		if (option == 0)
@@ -633,6 +642,27 @@ public class DrawManager {
 		drawCenteredRegularString(screen, instructionsString,
 				screen.getHeight() / 5);
 	}
+
+	/**
+	 * Draws Achievement screen title and instructions.
+	 *
+	 * @param screen
+	 *            Screen to draw on.
+	 * Hong
+	 */
+	public void drawAchievementMenu(final Screen screen) {
+		String recentScoreString = "Achievement";
+		String instructionsString = "Press Space to return";
+
+		backBufferGraphics.setColor(Color.GREEN);
+		drawCenteredBigString(screen, recentScoreString, screen.getHeight() / 8);
+
+		backBufferGraphics.setColor(Color.GRAY);
+		drawCenteredRegularString(screen, instructionsString,
+				screen.getHeight() / 5);
+	}
+
+
 
 	/**
 	 * Draws high scores.
