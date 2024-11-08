@@ -197,7 +197,7 @@ public class GameScreen extends Screen {
 		*
 		* Sets the wave counter
 		* **/
-		this.waveCounter = 1;
+		this.waveCounter = 2;
 
 		// Soomin Lee / TeamHUD
 		this.playTime = gameState.getTime();
@@ -326,6 +326,15 @@ public class GameScreen extends Screen {
 						this.fire_id++;
 						this.logger.info("Bullet's fire_id is " + fire_id);
 					}
+			}
+
+			if(!this.ship.isDestroyed()){
+				if(inputManager.isKeyDown(KeyEvent.VK_Q)){
+					itemManager.activateBomb();
+				}
+				if(inputManager.isKeyDown(KeyEvent.VK_E)){
+					itemManager.activateBarrier();
+				}
 			}
 
 			if (this.enemyShipSpecial != null) {
@@ -765,7 +774,8 @@ public class GameScreen extends Screen {
 		//Check item and ship collision
 		for(Item item : itemManager.items){
 			if (checkCollision(item, ship)) {
-				itemManager.OperateItem(item);
+				itemManager.itemSave(item);
+//				itemManager.OperateItem(item);
 				// CtrlS: Count coin
 				if (item.getSpriteType() == DrawManager.SpriteType.ItemCoin) coinItemsCollected++;
 				Core.getLogger().info("coin: " + coinItemsCollected);

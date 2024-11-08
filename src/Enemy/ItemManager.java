@@ -91,13 +91,64 @@ public class ItemManager {
         this.enemyShips = enemyShips;
     }
 
+    private int currentBomb = 0;
+    private int currentBarrier = 0;
+    public void itemSave(Item item){
+        if(item!= null){
+            DrawManager.SpriteType itemSelected = item.getSpriteType();
+
+            switch (itemSelected){
+                case ItemBomb :
+                    currentBomb++;
+                    break;
+                case ItemBarrier:
+                    currentBarrier++;
+                    break;
+                case ItemHeart:
+                    Item2.activeheart(gameScreen);
+                    //Sound_Operator
+                    sm = SoundManager.getInstance();
+                    sm.playES("get_item");
+                    break;
+                case ItemFeverTime:
+                    feverTimeItem.activate();
+                    break;
+                case ItemPierce:
+                    numberOfBullet.pierceup();
+                    ship.increaseBulletSpeed();
+                    //Sound_Operator
+                    sm = SoundManager.getInstance();
+                    sm.playES("get_item");
+                    break;
+                case ItemCoin:
+                    this.logger.info("You get coin!");
+                    break;
+                case ItemSpeedUp:
+                    speedItem.activate(true, enemyShips);
+                    break;
+                case ItemSpeedSlow:
+                    speedItem.activate(false, enemyShips);
+                    break;
+            }
+            addItemRecycle(item);
+        }
+    }
+
+    public void activateBomb(){
+        OperateItem(DrawManager.SpriteType.ItemBomb);
+        this.currentBomb--;
+    }
+    public void activateBarrier(){
+        OperateItem(DrawManager.SpriteType.ItemBarrier);
+        this.currentBarrier--;
+    }
     // team Inventory
-    public void OperateItem(Item item) {
-        if(item!= null) {
+    public void OperateItem(DrawManager.SpriteType item) {
+//        if(item!= null) {
 
-            DrawManager.SpriteType whatItem = item.getSpriteType();
+//            DrawManager.SpriteType whatItem = item.getSpriteType();
 
-            switch (whatItem) {     // Operates according to the SpriteType of the item.
+            switch (item) {     // Operates according to the SpriteType of the item.
                 case ItemBomb:
                     Bomb.setIsbomb(true);
                     Bomb.setCanShoot(true);
@@ -138,8 +189,8 @@ public class ItemManager {
                     break;
             }
 
-            addItemRecycle(item);
-        }
+//            addItemRecycle(item);
+//        }
     }
 
     public void addItemRecycle(Item item) {
