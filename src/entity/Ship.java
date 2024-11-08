@@ -74,7 +74,8 @@ public class Ship extends Entity {
 	 * reached.
 	 */
 	public final void moveRight() {
-		this.positionX += growth.getMoveSpeed(); //  Use PlayerGrowth for movement speed
+		this.accelX = .1 + growth.getMoveSpeed() * 0.3;
+//		this.positionX += growth.getMoveSpeed(); //  Use PlayerGrowth for movement speed
 	} //Edit by Enemy
 
 
@@ -83,8 +84,21 @@ public class Ship extends Entity {
 	 * reached.
 	 */
 	public final void moveLeft() {
-		this.positionX -= growth.getMoveSpeed(); // Use PlayerGrowth for movement speed
+		this.accelX = -.1 - growth.getMoveSpeed() * 0.3;
+//		this.positionX -= growth.getMoveSpeed(); // Use PlayerGrowth for movement speed
 	} //Edit by Enemy
+
+	public final void updateMovement() {
+		double antiForce = 0.86;
+		this.velocityX += this.accelX;
+		this.velocityX *= antiForce;
+		this.velocityY += this.accelY;
+		this.velocityY *= antiForce;
+		this.positionX += (int) this.velocityX;
+		this.positionY += (int) this.velocityY;
+		this.accelX = 0;
+		this.accelY = 0;
+	}
 
 	/**
 	 * Shoots a bullet upwards.
