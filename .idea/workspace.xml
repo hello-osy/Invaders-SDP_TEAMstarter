@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/214990__peridactyloptrix__laser-blast-x3.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/214990__peridactyloptrix__laser-blast-x3.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/276885__18hiltc__rocket-fly-by.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/276885__18hiltc__rocket-fly-by.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/332056__qubodup__fast-collision.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/332056__qubodup__fast-collision.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/635075__olivertravian__popchat.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/635075__olivertravian__popchat.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/752736__etheraudio__square-blip-non-fade.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/752736__etheraudio__square-blip-non-fade.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/MP_Blast.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/MP_Blast.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/TalkFile_8bit-music-for-game-68698.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/TalkFile_8bit-music-for-game-68698.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/ally_airship_damage.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/ally_airship_damage.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/ally_airship_die.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/ally_airship_die.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/ally_airship_explosion.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/ally_airship_explosion.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/coin-collect-retro-8-bit-sound-effect-145251.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/coin-collect-retro-8-bit-sound-effect-145251.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/enemyGunShot01.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/enemyGunShot01.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/enemyGunShot02.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/enemyGunShot02.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/item_coin.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/item_coin.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/obstacle_explosion.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/obstacle_explosion.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/retro-explode-2-236688.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/retro-explode-2-236688.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Sound.assets/ES/start_button.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/Sound.assets/ES/start_button.wav" afterDir="false" />
-    </list>
+    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="&#10;Sound effect improvements" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +24,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -151,8 +133,25 @@
       <workItem from="1728890316138" duration="346000" />
       <workItem from="1731025965812" duration="83000" />
       <workItem from="1731026055925" duration="1532000" />
-      <workItem from="1731233051493" duration="651000" />
+      <workItem from="1731233051493" duration="1484000" />
     </task>
+    <task id="LOCAL-00001" summary="&#10;Sound effect improvements">
+      <option name="closed" value="true" />
+      <created>1731233735305</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731233735305</updated>
+    </task>
+    <task id="LOCAL-00002" summary="&#10;Sound effect improvements">
+      <option name="closed" value="true" />
+      <created>1731233755389</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731233755389</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,5 +214,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&#10;Sound effect improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;Sound effect improvements" />
   </component>
 </project>
