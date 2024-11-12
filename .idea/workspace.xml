@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="&#10;Sound effect improvements" />
+    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="sound effect">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -133,7 +135,7 @@
       <workItem from="1728890316138" duration="346000" />
       <workItem from="1731025965812" duration="83000" />
       <workItem from="1731026055925" duration="1532000" />
-      <workItem from="1731233051493" duration="1484000" />
+      <workItem from="1731233051493" duration="2531000" />
     </task>
     <task id="LOCAL-00001" summary="&#10;Sound effect improvements">
       <option name="closed" value="true" />
@@ -151,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731233755389</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="sound effect">
+      <option name="closed" value="true" />
+      <created>1731241582889</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731241582889</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +227,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&#10;Sound effect improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;Sound effect improvements" />
+    <MESSAGE value="sound effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="sound effect" />
   </component>
 </project>
