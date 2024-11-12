@@ -486,7 +486,7 @@ public class GameScreen extends Screen {
 		// Interface.
 //		drawManager.drawScore(this, this.scoreManager.getAccumulatedScore());    //clove -> edit by jesung ko - TeamHUD(to udjust score)
 //		drawManager.drawScore(this, this.score); // by jesung ko - TeamHUD
-		DrawManagerImpl.drawScore2(this,this.score); // by jesung ko - TeamHUD
+		DrawManagerImpl.drawScore2(this,this.scoreManager.getAccumulatedScore()); // by jesung ko - TeamHUD
 		drawManager.drawLives(this, this.lives);	
 		drawManager.drawHorizontalLine(this, SEPARATION_LINE_HEIGHT - 1);
 		DrawManagerImpl.drawRemainingEnemies(this, getRemainingEnemies()); // by HUD team SeungYun
@@ -660,7 +660,7 @@ public class GameScreen extends Screen {
 						}
 
             this.scoreManager.addScore(feverScore); //clove
-            this.score += CntAndPnt[1];
+            this.score = this.scoreManager.getAccumulatedScore();
 
 						// CtrlS - If collision occur then check the bullet can process
 						if (!processedFireBullet.contains(bullet.getFire_id())) {
