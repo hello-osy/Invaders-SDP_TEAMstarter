@@ -688,7 +688,8 @@ public class GameScreen extends Screen {
 						if (enemyShip.getColor() == Color.MAGENTA) {
 							this.itemManager.dropItem(enemyShip, 1, 1);
 						}
-						this.score += enemyShip.getPointValue();
+						this.scoreManager.addScore(enemyShip.getPointValue());
+						this.score = this.scoreManager.getAccumulatedScore();
 						this.shipsDestroyed++;
 						enemyShip.setChainExploded(false); // resets enemy's chain explosion state.
 					}

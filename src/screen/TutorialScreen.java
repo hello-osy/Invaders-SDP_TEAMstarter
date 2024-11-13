@@ -176,9 +176,10 @@ public class TutorialScreen extends Screen {
 
         String[] tips = {
                 "SCORING SYSTEM",
-                "Regular Enemy: 000 points",
-                "Special UFO: 000 points",
-                "Boss Defeat: 000 points",
+                "Regular Enemy: 1 points",
+                "Special UFO: 2 points",
+                "Boss Defeat: 3 points",
+                "Base enemy points × Current level = Final score awarded",
                 "",
                 "SURVIVAL TIPS",
                 "Stay mobile to avoid enemy fire",
