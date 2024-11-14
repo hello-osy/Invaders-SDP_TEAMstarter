@@ -386,6 +386,7 @@ public class DrawManager {
 		String RecentRecord = "Recent Records";
 		String merchantString = "merchant";
 		String highScoresString = "High scores";
+		String settingString = "Setting";
 		String exitString = "exit";
 
         // AddSign addSign = new AddSign();
@@ -435,13 +436,21 @@ public class DrawManager {
 		drawCenteredRegularString(screen, RecentRecord, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 8);
 
+		// Setting
+		if (option == 7)
+			backBufferGraphics.setColor(Color.GREEN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, settingString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 10);
+
 		// Exit
 		if (option == 0)
 			backBufferGraphics.setColor(Color.GREEN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, exitString, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 10);
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 12);
 	}
 
 	public void drawMerchantTitle(final Screen screen, final int option) {
@@ -506,6 +515,45 @@ public class DrawManager {
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, coinGainString, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 6); // adjusted Height
+
+		// Go main
+		if (option == 0)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, goMainString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 10); // adjusted Height
+	}
+	public void drawSettingTitle(final Screen screen) {
+		String titleString = "Setting";
+		String instructionsString =
+				"select with w+s / arrows, confirm with space";
+
+		backBufferGraphics.setColor(Color.GRAY);
+		drawCenteredRegularString(screen, instructionsString,
+				screen.getHeight() * 3 / 10);
+
+		backBufferGraphics.setColor(Color.GREEN);
+		drawCenteredBigString(screen, titleString, screen.getHeight() / 4);
+	}
+	public void drawSettingMenu(final Screen screen, final int option) {
+		String goMainString = "Go main";
+		String bgmVolumeString = "bgmVolume";
+		String esVolumeString = "esmVolume";
+
+		if (option == 1)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, bgmVolumeString, screen.getHeight()
+				/ 4 * 2);
+
+		if (option == 2)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, esVolumeString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 2); // adjusted Height
 
 		// Go main
 		if (option == 0)

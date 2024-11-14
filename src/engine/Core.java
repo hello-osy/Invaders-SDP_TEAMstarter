@@ -302,7 +302,7 @@ public final class Core {
                     LOGGER.info("Closing high score screen.");
                     break;
                 case 5:
-                    // Main menu.
+                    // Merchant menu.
                     currentScreen = new MerchantScreen(width, height, FPS);
                     LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
                             + " title screen at " + FPS + " fps.");
@@ -318,6 +318,14 @@ public final class Core {
                     LOGGER.info("Closing recent record screen.");
                     break;
                 case 7:
+                    // Merchant menu.
+                    currentScreen = new SettingScreen(width, height, FPS);
+                    LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
+                            + " title screen at " + FPS + " fps.");
+                    returnCode = frame.setScreen(currentScreen);
+                    LOGGER.info("Closing Setting screen.");
+                    break;
+                case 8:
                     LOGGER.info("Starting inGameBGM");
                     // Sound Operator
                     sm.playES("start_button_ES");
