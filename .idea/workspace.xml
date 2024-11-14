@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="system_1">
-      <change afterPath="$PROJECT_DIR$/src/entity/IconContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inventory_develop/Magnet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/StatusConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/res/StatusConfig.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/graphics" beforeDir="false" afterPath="$PROJECT_DIR$/res/graphics" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy/ItemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy/ItemManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/DrawManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/DrawManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inventory_develop/ShipStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory_develop/ShipStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screen/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/screen/GameScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731028274831</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added.">
+      <option name="closed" value="true" />
+      <created>1731614478461</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731614478461</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +195,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/feature/physics" />
+                        <option value="feature/system" />
                       </list>
                     </value>
                   </entry>
@@ -236,6 +234,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="system_1" />
-    <option name="LAST_COMMIT_MESSAGE" value="system_1" />
+    <MESSAGE value="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added." />
+    <option name="LAST_COMMIT_MESSAGE" value="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added." />
   </component>
 </project>
