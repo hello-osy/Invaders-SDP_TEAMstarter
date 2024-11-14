@@ -197,7 +197,7 @@ public class GameScreen extends Screen {
 		*
 		* Sets the wave counter
 		* **/
-		this.waveCounter = 2;
+		this.waveCounter = 1;
 
 		// Soomin Lee / TeamHUD
 		this.playTime = gameState.getTime();
@@ -306,6 +306,12 @@ public class GameScreen extends Screen {
 						|| inputManager.isKeyDown(KeyEvent.VK_D);
 				boolean moveLeft = inputManager.isKeyDown(KeyEvent.VK_LEFT)
 						|| inputManager.isKeyDown(KeyEvent.VK_A);
+				boolean shoot;
+				if(player2==null){
+					shoot = inputManager.isKeyDown(KeyEvent.VK_SPACE);
+				}else{
+					shoot = inputManager.isKeyDown(KeyEvent.VK_ENTER);
+				}
 
 				boolean isRightBorder = this.ship.getPositionX()
 						+ this.ship.getWidth() + this.ship.getSpeed() > this.width - 1;
@@ -320,12 +326,13 @@ public class GameScreen extends Screen {
 					this.ship.moveLeft();
 					this.backgroundMoveLeft = true;
 				}
-				if (inputManager.isKeyDown(KeyEvent.VK_ENTER))
+				if (shoot) {
 					if (this.ship.shoot(this.bullets)) {
 						this.bulletsShot++;
 						this.fire_id++;
 						this.logger.info("Bullet's fire_id is " + fire_id);
 					}
+				}
 			}
 
 			if(!this.ship.isDestroyed()){
@@ -334,6 +341,9 @@ public class GameScreen extends Screen {
 				}
 				if(inputManager.isKeyDown(KeyEvent.VK_E)){
 					itemManager.activateBarrier();
+				}
+				if(inputManager.isKeyDown(KeyEvent.VK_R)){
+					itemManager.activateMagnet();
 				}
 			}
 
@@ -501,6 +511,7 @@ public class GameScreen extends Screen {
 		DrawManagerImpl.drawRemainingEnemies(this, getRemainingEnemies()); // by HUD team SeungYun
 		DrawManagerImpl.drawLevel(this, this.level);
 		DrawManagerImpl.drawBulletSpeed(this, ship.getBulletSpeed());
+		DrawManager.drawCurrentItems(this,itemManager);
 		// Call the method in DrawManagerImpl - Lee Hyun Woo TeamHud
 		DrawManagerImpl.drawTime(this, this.playTime);
 		// Call the method in DrawManagerImpl - Soomin Lee / TeamHUD

@@ -8,15 +8,15 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 import CtrlS.RoundState;
 import CtrlS.Gem;
+import Enemy.ItemManager;
 import entity.AddSign;
 import entity.Coin;
+import entity.IconContainer;
 import inventory_develop.Bomb;
 import screen.Screen;
 import entity.Entity;
@@ -108,6 +108,7 @@ public class DrawManager {
 		ItemBomb,
 		ItemBarrier,
 		ItemFeverTime,
+		ItemMagnet,
 		// Produced by Starter Team
 
         // Produced by Starter Team
@@ -117,7 +118,8 @@ public class DrawManager {
 		AddSign,
 		/** Gem - Added by CtrlS */
 		Gem,
-        ItemSpeedUp, ItemSpeedSlow, Obstacle
+        ItemSpeedUp, ItemSpeedSlow, Obstacle,
+		Container
 
 	};
 
@@ -164,6 +166,8 @@ public class DrawManager {
 			spriteMap.put(SpriteType.ItemPierce, new boolean[7][7]);
 			spriteMap.put(SpriteType.ItemSpeedUp, new boolean[9][9]);
 			spriteMap.put(SpriteType.ItemSpeedSlow, new boolean[9][9]);
+			spriteMap.put(SpriteType.ItemMagnet, new boolean[9][9]);
+			spriteMap.put(SpriteType.Container, new boolean[15][15]);
 
 			fileManager.loadSprite(spriteMap);
 			logger.info("Finished loading the sprites.");
@@ -265,8 +269,24 @@ public class DrawManager {
 			System.out.println(e);
 			System.exit(1);
 		}
+	}
 
+	public static void drawEntityDouble(final Entity entity, final int positionX, final int positionY){
+		try {
+			boolean[][] image = spriteMap.get(entity.getSpriteType());
 
+			backBufferGraphics.setColor(entity.getColor());
+			for (int i = 0; i < image.length; i++)
+				for (int j = 0; j < image[i].length; j++)
+					if (image[i][j])
+						backBufferGraphics.fillRect(positionX + i * 4, positionY
+								+ j * 4, 4, 4);
+
+		} catch(Exception e) {
+
+			System.out.println(e);
+			System.exit(1);
+		}
 	}
 
 	/**
@@ -337,6 +357,42 @@ public class DrawManager {
 		for (int i = 0; i < lives; i++)
 			drawEntity(heart, 20 + 30 * i, 10);
 	}
+	public static void drawCurrentItems(final Screen screen, final ItemManager itemManager){
+		backBufferGraphics.setFont(fontBig);
+		backBufferGraphics.setColor(Color.WHITE);
+
+		IconContainer container = new IconContainer();
+		Entity bomb = new Entity(0,0,7*2,9*2,Color.GRAY){};
+		Entity barrier = new Entity(0,0,9*2,9*2,Color.GREEN){};
+		Entity magnet = new Entity(0,0,9*2,9*2,Color.GRAY){};
+		bomb.setSpriteType(SpriteType.ItemBomb);
+		barrier.setSpriteType(SpriteType.ItemBarrier);
+		magnet.setSpriteType(SpriteType.ItemMagnet);
+
+		int containerW = container.getWidth()*2;
+		int containerH = container.getHeight()*2;
+		int lowSeperateline = 65;
+		int x_margin = 10;
+		int y_margin = 10;
+		String[] command = {Integer.toString(itemManager.getCurrentMagnet())
+				,Integer.toString(itemManager.getCurrentBarrier())
+				,Integer.toString(itemManager.getCurrentBomb())};
+		for(int i = 1; i < 4; i++){
+			drawEntityDouble(container, screen.getWidth()- (containerW+ x_margin),
+					screen.getHeight()-lowSeperateline-i*(containerH+y_margin));
+			backBufferGraphics.setColor(Color.WHITE);
+			backBufferGraphics.drawString(command[i-1],screen.getWidth()- x_margin-10,
+					screen.getHeight()-lowSeperateline-i*(containerH+y_margin)+containerH-5);
+		}
+
+		drawEntityDouble(bomb, screen.getWidth()- (containerW + x_margin) + (containerW-bomb.getWidth()*2)/2,
+				screen.getHeight()-lowSeperateline-(containerH + y_margin)*3 + (containerH-bomb.getHeight()*2)/2);
+		drawEntityDouble(barrier, screen.getWidth()- (containerW + x_margin) + (containerW-barrier.getWidth()*2)/2,
+				screen.getHeight()-lowSeperateline-(containerH + y_margin)*2 + (containerH-barrier.getHeight()*2)/2);
+		drawEntityDouble(magnet, screen.getWidth()- (containerW + x_margin) + (containerW-magnet.getWidth()*2)/2,
+				screen.getHeight()-lowSeperateline-(containerH + y_margin) + (containerH-magnet.getHeight()*2)/2);
+	}
+	//기준선 + 컨테이너 높이 * i + 마진 * i -(컨테이너 - 아이콘높이)/2
 
 	/**
 	 * Draws a thick line from side to side of the screen.
@@ -868,6 +924,7 @@ public class DrawManager {
 	 */
 	public void drawCurrentCoin(final Screen screen , final int coin) {
 		Coin coinImage = new Coin();
+		IconContainer iconContainer = new IconContainer();
 		int coinX = 10; //Starter edited
 		int coinY = 7; //Adjust the y position value - Starter
 		drawEntity(coinImage, coinX, coinY);

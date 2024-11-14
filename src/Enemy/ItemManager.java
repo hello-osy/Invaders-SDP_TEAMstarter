@@ -93,6 +93,7 @@ public class ItemManager {
 
     private int currentBomb = 0;
     private int currentBarrier = 0;
+    private int currentMagnet = 0;
     public void itemSave(Item item){
         if(item!= null){
             DrawManager.SpriteType itemSelected = item.getSpriteType();
@@ -103,6 +104,9 @@ public class ItemManager {
                     break;
                 case ItemBarrier:
                     currentBarrier++;
+                    break;
+                case ItemMagnet:
+                    currentMagnet++;
                     break;
                 case ItemHeart:
                     Item2.activeheart(gameScreen);
@@ -135,13 +139,28 @@ public class ItemManager {
     }
 
     public void activateBomb(){
-        OperateItem(DrawManager.SpriteType.ItemBomb);
-        this.currentBomb--;
+        if(currentBomb > 0){
+            OperateItem(DrawManager.SpriteType.ItemBomb);
+            this.currentBomb--;
+        }
     }
     public void activateBarrier(){
-        OperateItem(DrawManager.SpriteType.ItemBarrier);
-        this.currentBarrier--;
+        if(currentBarrier > 0){
+            OperateItem(DrawManager.SpriteType.ItemBarrier);
+            this.currentBarrier--;
+        }
     }
+    public void activateMagnet(){
+        if(currentMagnet > 0){
+            for(Item item: items){
+                itemSave(item);
+            }
+        }
+    }
+    public int getCurrentBomb(){ return this.currentBomb; }
+    public int getCurrentBarrier() { return currentBarrier; }
+    public int getCurrentMagnet() { return currentMagnet; }
+
     // team Inventory
     public void OperateItem(DrawManager.SpriteType item) {
 //        if(item!= null) {
