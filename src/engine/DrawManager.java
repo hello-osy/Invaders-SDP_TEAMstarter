@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 import CtrlS.RoundState;
 import CtrlS.Gem;
+import Sound_Operator.SoundManager;
 import entity.AddSign;
 import entity.Coin;
 import inventory_develop.Bomb;
@@ -527,7 +528,7 @@ public class DrawManager {
 	public void drawSettingTitle(final Screen screen) {
 		String titleString = "Setting";
 		String instructionsString =
-				"select with w+s / arrows, confirm with space";
+				"up and down volume with z+x, c+v / play sound with space";
 
 		backBufferGraphics.setColor(Color.GRAY);
 		drawCenteredRegularString(screen, instructionsString,
@@ -536,23 +537,26 @@ public class DrawManager {
 		backBufferGraphics.setColor(Color.GREEN);
 		drawCenteredBigString(screen, titleString, screen.getHeight() / 4);
 	}
-	public void drawSettingMenu(final Screen screen, final int option) {
+	public void drawSettingMenu(final Screen screen, final int option, final int option2, final int option3) {
 		String goMainString = "Go main";
-		String bgmVolumeString = "bgmVolume";
-		String esVolumeString = "esmVolume";
-
+		String BGMString = "bgm";
+		String ESString = "es";
+		String[] BGMNameList = SoundManager.getInstance().getBGMNameList();
+		String[] ESNameList = SoundManager.getInstance().getESNameList();
 		if (option == 1)
 			backBufferGraphics.setColor(Color.CYAN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
-		drawCenteredRegularString(screen, bgmVolumeString, screen.getHeight()
+		BGMString = BGMString + " (" +BGMNameList[option2] + ")";
+		drawCenteredRegularString(screen, BGMString, screen.getHeight()
 				/ 4 * 2);
 
 		if (option == 2)
 			backBufferGraphics.setColor(Color.CYAN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
-		drawCenteredRegularString(screen, esVolumeString, screen.getHeight()
+		ESString = ESString + " (" +ESNameList[option3] + ")";
+		drawCenteredRegularString(screen, ESString, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 2); // adjusted Height
 
 		// Go main
