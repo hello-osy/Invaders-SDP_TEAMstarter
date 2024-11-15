@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screen/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/screen/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screen/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/screen/Screen.java" afterDir="false" />
-    </list>
+    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,14 +52,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Core.executor": "Run",
-    "git-widget-placeholder": "feature/system",
-    "kotlin-language-version-configured": "true",
-    "애플리케이션.Core.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Core.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/system&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;애플리케이션.Core.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="clove" />

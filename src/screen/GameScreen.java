@@ -533,6 +533,7 @@ public class GameScreen extends Screen {
 		DrawManagerImpl.drawTime(this, this.playTime);
 		// Call the method in DrawManagerImpl - Soomin Lee / TeamHUD
 		drawManager.drawItem(this); // HUD team - Jo Minseo
+		drawManager.drawMessage(this, "Press ESC to quit");
 
 		if(player2 != null){
 			DrawManagerImpl.drawBulletSpeed2P(this, player2.getBulletSpeed());
