@@ -221,7 +221,7 @@ public final class Core {
                         GameState prevState = gameState;
                         currentScreen = new GameScreen(gameState,
                                 gameSettings.get(gameState.getLevel() - 1),
-                                bonusLife, width, height, FPS);
+                                bonusLife, width, height, FPS, achievementManager.getAchievementConditions());
                         LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
                                 + " game screen at " + FPS + " fps.");
                         frame.setScreen(currentScreen);
@@ -302,7 +302,7 @@ public final class Core {
                     LOGGER.info("Closing high score screen.");
                     break;
                 case 5:
-                    // Main menu.
+                    // Merchant menu.
                     currentScreen = new MerchantScreen(width, height, FPS);
                     LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
                             + " title screen at " + FPS + " fps.");
@@ -326,6 +326,13 @@ public final class Core {
                     break;
 
                 case 8:
+                    currentScreen = new SettingScreen(width, height, FPS);
+                    LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
+                            + " title screen at " + FPS + " fps.");
+                    returnCode = frame.setScreen(currentScreen);
+                    LOGGER.info("Closing Setting screen.");
+                    break;
+                case 9:
                     LOGGER.info("Starting inGameBGM");
                     // Sound Operator
                     sm.playES("start_button_ES");
@@ -352,7 +359,7 @@ public final class Core {
                         GameState prevState = gameState;
 
                         // TwoPlayerMode의 생성자를 호출할 때 필요한 매개변수를 모두 전달
-                        currentScreen = new TwoPlayerMode(gameState, currentGameSettings, bonusLife, width, height, fps);
+                        currentScreen = new TwoPlayerMode(gameState, currentGameSettings, bonusLife, width, height, fps, achievementManager.getAchievementConditions());
                         currentScreen.setTwoPlayerMode(true);
                         Statistics statistics = new Statistics(); //Clove
 

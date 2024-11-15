@@ -21,6 +21,7 @@ public class ShipStatus {
     private Double feverTime_probability;
     private Double speedUp_probability;
     private Double speedSlow_probability;
+    private Double magnet_probability;
 
     private int Speed_price;
     private int num_Bullet_price;
@@ -72,6 +73,7 @@ public class ShipStatus {
             feverTime_probability = Double.parseDouble(properties.getProperty("feverTime.probability"));
             speedUp_probability = Double.parseDouble(properties.getProperty("SpeedUp.probability"));
             speedSlow_probability = Double.parseDouble(properties.getProperty("SpeedSlow.probability"));
+            magnet_probability = Double.parseDouble(properties.getProperty("Magnet.probability"));
 
 
         } catch (IOException e) {
@@ -127,6 +129,7 @@ public class ShipStatus {
     public Double getFeverTimeProbability() { return feverTime_probability; }
     public final double getSpeedUpProbability() {return speedUp_probability;}
     public final double getSpeedSlowProbability() {return speedSlow_probability;}
+    public final double getMagnetProbability(){return magnet_probability;}
 
     public final int getSpeed_price(){
         return Speed_price;
