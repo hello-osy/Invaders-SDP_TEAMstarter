@@ -9,6 +9,7 @@ import java.util.HashSet;
 
 import Enemy.*;
 import HUDTeam.DrawManagerImpl;
+import clove.AchievementConditions;
 import screen.GameScreen;
 import engine.GameState;
 import engine.GameSettings;
@@ -30,8 +31,8 @@ public class TwoPlayerMode extends GameScreen {
     public static int livestwo = 3;
 
 
-    public TwoPlayerMode(GameState gameState, GameSettings gameSettings, boolean bonusLife, int width, int height, int fps) {
-        super(gameState, gameSettings, bonusLife, width, height, fps);
+    public TwoPlayerMode(GameState gameState, GameSettings gameSettings, boolean bonusLife, int width, int height, int fps, AchievementConditions achievcon) {
+        super(gameState, gameSettings, bonusLife, width, height, fps, achievcon);
 
 
 

@@ -87,7 +87,12 @@ public class GameScreen extends Screen {
 	private int bulletsShot;
 	/** Total ships destroyed by the player. */
 	private int shipsDestroyed;
+
 	/** Moment the game starts. */
+	private int sum_bulletsShot;
+
+	private int sum_shipsDestroyed;
+
 	private long gameStartTime;
 	/** Checks if the level is finished. */
 	private boolean levelFinished;
@@ -168,7 +173,7 @@ public class GameScreen extends Screen {
 	 */
 	public GameScreen(final GameState gameState,
 			final GameSettings gameSettings, final boolean bonusLife,
-			final int width, final int height, final int fps) {
+			final int width, final int height, final int fps, final AchievementConditions achievementConditions) {
 		super(width, height, fps);
 
 		this.gameSettings = gameSettings;
@@ -203,7 +208,7 @@ public class GameScreen extends Screen {
 		this.playTime = gameState.getTime();
 		this.scoreManager = gameState.scoreManager; //Team Clove
 		this.statistics = new Statistics(); //Team Clove
-		this.achievementConditions = new AchievementConditions();
+		this.achievementConditions = achievementConditions;
 		this.coinItemsCollected = gameState.getCoinItemsCollected(); // CtrlS
 	}
 
@@ -425,6 +430,7 @@ public class GameScreen extends Screen {
 				statistics.comHighestLevel(level);
 				statistics.addBulletShot(bulletsShot);
 				statistics.addShipsDestroyed(shipsDestroyed);
+				achievementConditions.updateStat(statistics);
 
 				achievementConditions.onKill();
 				achievementConditions.onStage();
@@ -432,6 +438,8 @@ public class GameScreen extends Screen {
 				achievementConditions.killStreak();
 				achievementConditions.fastKill(fastKill);
 				achievementConditions.score(score);
+				bulletsShot=0;
+				shipsDestroyed=0;
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -650,7 +658,7 @@ public class GameScreen extends Screen {
 					if (!enemyShip.isDestroyed()
 							&& checkCollision(bullet, enemyShip)) {
 						int CntAndPnt[] = this.enemyShipFormation._destroy(bullet, enemyShip, false);    // team Inventory
-						this.shipsDestroyed += CntAndPnt[0];
+						//this.shipsDestroyed += CntAndPnt[0];
 						int feverScore = CntAndPnt[0]; //TEAM CLOVE //Edited by team Enemy
 
 						if(enemyShip.getHp() <= 0) {
