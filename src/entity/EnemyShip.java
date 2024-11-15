@@ -15,15 +15,15 @@ import Sound_Operator.SoundManager;
  */
 public class EnemyShip extends Entity {
 	/** Point value of a type A enemy. */
-	private static final int A_TYPE_POINTS = 10;
+	private static final int A_TYPE_POINTS = 1;
 	/** Point value of a type B enemy. */
-	private static final int B_TYPE_POINTS = 20;
+	private static final int B_TYPE_POINTS = 2;
 	/** Point value of a type C enemy. */
-	private static final int C_TYPE_POINTS = 30;
+	private static final int C_TYPE_POINTS = 3;
 	/** Point value of a type Explosive enemy. */
-	private static final int EXPLOSIVE_TYPE_POINTS = 50; //Edited by Enemy
+	private static final int EXPLOSIVE_TYPE_POINTS = 5; //Edited by Enemy
 	/** Point value of a bonus enemy. */
-	private static final int BONUS_TYPE_POINTS = 100;
+	private static final int BONUS_TYPE_POINTS = 10;
 
 	/** EnemyShip's health point */
 	private int hp; // Add by team Enemy

@@ -15,6 +15,8 @@ public class SoundManager {
     static Map<String, Clip> BGMs;
     static String[][] ESFiles;
     static String[][] BGMFiles;
+    static String[] BGMNameList;
+    static String[] ESNameList;
     private static Logger logger;
 /**
 * Code Description
@@ -222,6 +224,20 @@ public class SoundManager {
         }
         return 0;
     }
+    public void downBGMVolume(String[] BGMNameList, float i) {
+        for (String BGMName: BGMNameList) {
+            Clip clip = BGMs.get(BGMName);
+            FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            volumeControl.setValue(volumeControl.getValue() - i );
+        }
+    }
+    public void upBGMVolume(String[] BGMNameList, float i) {
+        for (String BGMName: BGMNameList) {
+            Clip clip = BGMs.get(BGMName);
+            FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            volumeControl.setValue(volumeControl.getValue() + i );
+        }
+    }
 
     public int modifyESVolume(String name, float volume){
         if(volume > 2 || volume < -60){
@@ -249,4 +265,24 @@ public class SoundManager {
             playES("ally_airship_destroy_die");
         }).start();
     }
+
+    public String[] getBGMNameList() {
+        if (BGMNameList == null) {
+            BGMNameList = new String[BGMFiles.length];
+            for (int i = 0; i < BGMFiles.length; i++) {
+                BGMNameList[i] = BGMFiles[i][0];
+            }
+        }
+        return BGMNameList;
+    }
+    public String[] getESNameList() {
+        if (ESNameList == null) {
+            ESNameList = new String[ESFiles.length];
+            for (int i = 0; i < ESFiles.length; i++) {
+                ESNameList[i] = ESFiles[i][0];
+            }
+        }
+        return ESNameList;
+    }
+
 }

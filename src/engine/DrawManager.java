@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 import CtrlS.RoundState;
 import CtrlS.Gem;
+import Sound_Operator.SoundManager;
 import entity.AddSign;
 import entity.Coin;
 import inventory_develop.Bomb;
@@ -390,6 +391,7 @@ public class DrawManager {
 		String merchantString = "merchant";
 		String highScoresString = "High scores";
 		String achievementString = "Achivements";
+		String settingString = "Setting";
 		String exitString = "exit";
 
         // AddSign addSign = new AddSign();
@@ -450,13 +452,21 @@ public class DrawManager {
 		drawCenteredRegularString(screen, achievementString, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 10); // adjusted Height
 
-		// Exit (Starter)
+		// Setting
+		if (option == 8)
+			backBufferGraphics.setColor(Color.GREEN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, settingString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 12);
+
+		// Exit
 		if (option == 0)
 			backBufferGraphics.setColor(Color.GREEN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, exitString, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 12); // adjusted Height
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 14); // adjusted Height
 	}
 
 	public void drawMerchantTitle(final Screen screen, final int option) {
@@ -521,6 +531,48 @@ public class DrawManager {
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, coinGainString, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 6); // adjusted Height
+
+		// Go main
+		if (option == 0)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		drawCenteredRegularString(screen, goMainString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 10); // adjusted Height
+	}
+	public void drawSettingTitle(final Screen screen) {
+		String titleString = "Setting";
+		String instructionsString =
+				"up and down volume with z+x, c+v / play sound with space";
+
+		backBufferGraphics.setColor(Color.GRAY);
+		drawCenteredRegularString(screen, instructionsString,
+				screen.getHeight() * 3 / 10);
+
+		backBufferGraphics.setColor(Color.GREEN);
+		drawCenteredBigString(screen, titleString, screen.getHeight() / 4);
+	}
+	public void drawSettingMenu(final Screen screen, final int option, final int option2, final int option3) {
+		String goMainString = "Go main";
+		String BGMString = "bgm";
+		String ESString = "es";
+		String[] BGMNameList = SoundManager.getInstance().getBGMNameList();
+		String[] ESNameList = SoundManager.getInstance().getESNameList();
+		if (option == 1)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		BGMString = BGMString + " (" +BGMNameList[option2] + ")";
+		drawCenteredRegularString(screen, BGMString, screen.getHeight()
+				/ 4 * 2);
+
+		if (option == 2)
+			backBufferGraphics.setColor(Color.CYAN);
+		else
+			backBufferGraphics.setColor(Color.WHITE);
+		ESString = ESString + " (" +ESNameList[option3] + ")";
+		drawCenteredRegularString(screen, ESString, screen.getHeight()
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 2); // adjusted Height
 
 		// Go main
 		if (option == 0)

@@ -4,31 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1186c4-449e-4f99-806a-9dc77cc861f2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="1088f907-2e6c-40de-a125-19b4f7b25115" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Core.executor": "Run",
-    "git-widget-placeholder": "release",
-    "last_opened_file_path": "C:/OSYSTUDY/241108_4/Invaders-SDP_TEAMstarter/res"
+    "애플리케이션.Core.executor": "Run"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\OSYSTUDY\241108_4\Invaders-SDP_TEAMstarter\res" />
-      <recent name="C:\OSYSTUDY\241108_4\Invaders-SDP_TEAMstarter\.idea" />
-    </key>
-  </component>
   <component name="TaskManager">
     <servers />
   </component>
