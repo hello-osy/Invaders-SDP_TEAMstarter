@@ -227,6 +227,9 @@ public final class Core {
                         frame.setScreen(currentScreen);
                         LOGGER.info("Closing game screen.");
 
+                        if (currentScreen.getReturnCode() == 1) {
+                            break; // 현재 Ingame 루프 종료
+                        }
 
                         achievementManager.updateAchievements(currentScreen); // TEAM CLOVER : Achievement
 
