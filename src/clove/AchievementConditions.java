@@ -84,6 +84,16 @@ public class AchievementConditions {
     public AchievementConditions(DrawManager drawManager) {
         this.drawManager = drawManager;
         initializeAchievements();
+
+        try{
+            this.stats = new Statistics();
+            setStatistics();
+        } catch (IOException e){
+            logger.warning("Couldn't load Statistics!");
+        }
+
+        scheduler = Executors.newSingleThreadScheduledExecutor();
+        startFastKillCheck();
     }
 
     public void initializeAchievements() {
@@ -149,6 +159,15 @@ public class AchievementConditions {
                 completeAchievement(achievement);
             }
         }
+    }
+    public void updateStat(Statistics stat) {
+        try{
+            this.stats = new Statistics();
+            setStatistics();
+        } catch (IOException e){
+            logger.warning("Couldn't load Statistics!");
+        }
+
     }
 
     public void onKill() throws IOException {
@@ -235,7 +254,7 @@ public class AchievementConditions {
     }
 
     public void trials() {
-        int playedTrials = stats.getPlayedGameNumber();
+        int playedTrials = stats.getPlayedGameNumber()+1;
         for (Achievement achievement : trialAchievements) {
             System.out.println("Checking trial achievements. Current trials: " + playedTrials);
             if (playedTrials >= achievement.getRequiredTrials() && !achievement.isCompleted()) {

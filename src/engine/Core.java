@@ -221,7 +221,7 @@ public final class Core {
                         GameState prevState = gameState;
                         currentScreen = new GameScreen(gameState,
                                 gameSettings.get(gameState.getLevel() - 1),
-                                bonusLife, width, height, FPS);
+                                bonusLife, width, height, FPS, achievementManager.getAchievementConditions());
                         LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
                                 + " game screen at " + FPS + " fps.");
                         frame.setScreen(currentScreen);
@@ -359,7 +359,7 @@ public final class Core {
                         GameState prevState = gameState;
 
                         // TwoPlayerMode의 생성자를 호출할 때 필요한 매개변수를 모두 전달
-                        currentScreen = new TwoPlayerMode(gameState, currentGameSettings, bonusLife, width, height, fps);
+                        currentScreen = new TwoPlayerMode(gameState, currentGameSettings, bonusLife, width, height, fps, achievementManager.getAchievementConditions());
                         currentScreen.setTwoPlayerMode(true);
                         Statistics statistics = new Statistics(); //Clove
 

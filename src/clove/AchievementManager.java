@@ -19,6 +19,10 @@ public class AchievementManager {
 
     private AchievementConditions achievementConditions;
 
+    public AchievementConditions getAchievementConditions() {
+        return achievementConditions;
+    }
+
     public AchievementManager(DrawManager drawManager) {
         this.achievementConditions = new AchievementConditions(drawManager);
     }
