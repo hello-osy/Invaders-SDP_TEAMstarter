@@ -155,6 +155,7 @@ public class ItemManager {
             for(Item item: items){
                 itemSave(item);
             }
+            this.currentMagnet--;
         }
     }
     public int getCurrentBomb(){ return this.currentBomb; }
