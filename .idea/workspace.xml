@@ -22,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/background" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,13 +31,13 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;studio-yb&quot;
+    &quot;assignee&quot;: &quot;Wimogg&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/hello-osy/Invaders-SDP_TEAMstarter.git&quot;,
-    &quot;accountId&quot;: &quot;f743e967-330b-4e91-8923-08a0132a1573&quot;
+    &quot;accountId&quot;: &quot;2f1aaa5f-21a1-4b92-872f-3aeb7c562f13&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -58,7 +58,7 @@
   &quot;keyToString&quot;: {
     &quot;Application.Core.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/system&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/OSYSTUDY/241018/Invaders-SDP_TEAMstarter&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -69,6 +69,7 @@
     &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.28390804&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
     &quot;애플리케이션.Core.executor&quot;: &quot;Run&quot;
   }
@@ -156,6 +157,30 @@
       <option name="project" value="LOCAL" />
       <updated>1731241582889</updated>
     </task>
+    <task id="LOCAL-00004" summary="system_1">
+      <option name="closed" value="true" />
+      <created>1731028274830</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731028274831</updated>
+    </task>
+    <task id="LOCAL-00005" summary="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added.">
+      <option name="closed" value="true" />
+      <created>1731614478461</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731614478461</updated>
+    </task>
+    <task id="LOCAL-00006" summary="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added.">
+      <option name="closed" value="true" />
+      <created>1731628787382</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731628787382</updated>
+    </task>
     <option name="localTasksCounter" value="4" />
     <servers />
   </component>
@@ -177,6 +202,26 @@
     <option name="OPEN_GENERIC_TABS">
       <map>
         <entry key="d8a76686-41bf-4f81-bdf0-ee761e77b1ae" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="feature/system" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
       </map>
     </option>
     <option name="TAB_STATES">
@@ -221,8 +266,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&#10;Sound effect improvements" />
-    <MESSAGE value="sound effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="sound effect" />
+    <MESSAGE value="system_1" />
+    <MESSAGE value="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added." />
+    <option name="LAST_COMMIT_MESSAGE" value="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added." />
   </component>
 </project>

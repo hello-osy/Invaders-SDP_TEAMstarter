@@ -119,7 +119,7 @@ public class TwoPlayerMode extends GameScreen {
         if(player2==null) return;
         for (Item item : itemManager.items) {
             if (checkCollision(item, player2)) {
-                itemManager.OperateItem(item); // 아이템 효과 적용
+                itemManager.itemSave(item); // 아이템 효과 적용
                 System.out.println("Item collected by Player 2.");
             }
         }

@@ -306,6 +306,12 @@ public class GameScreen extends Screen {
 						|| inputManager.isKeyDown(KeyEvent.VK_D);
 				boolean moveLeft = inputManager.isKeyDown(KeyEvent.VK_LEFT)
 						|| inputManager.isKeyDown(KeyEvent.VK_A);
+				boolean shoot;
+				if(player2==null){
+					shoot = inputManager.isKeyDown(KeyEvent.VK_SPACE);
+				}else{
+					shoot = inputManager.isKeyDown(KeyEvent.VK_ENTER);
+				}
 
 				// Collision detection: Check if the entity is colliding with the borders of the sides
 				boolean isRightBorder = this.ship.getPositionX()
@@ -321,12 +327,25 @@ public class GameScreen extends Screen {
 					this.ship.moveLeft();
 					this.backgroundMoveLeft = true;
 				}
-				if (inputManager.isKeyDown(KeyEvent.VK_ENTER))
+				if (shoot) {
 					if (this.ship.shoot(this.bullets)) {
 						this.bulletsShot++;
 						this.fire_id++;
 						this.logger.info("Bullet's fire_id is " + fire_id);
 					}
+				}
+			}
+
+			if(!this.ship.isDestroyed()){
+				if(inputManager.isKeyDown(KeyEvent.VK_Q)){
+					itemManager.activateBomb();
+				}
+				if(inputManager.isKeyDown(KeyEvent.VK_E)){
+					itemManager.activateBarrier();
+				}
+				if(inputManager.isKeyDown(KeyEvent.VK_R)){
+					itemManager.activateMagnet();
+				}
 			}
 
 			if (this.enemyShipSpecial != null) {
@@ -494,6 +513,7 @@ public class GameScreen extends Screen {
 		DrawManagerImpl.drawRemainingEnemies(this, getRemainingEnemies()); // by HUD team SeungYun
 		DrawManagerImpl.drawLevel(this, this.level);
 		DrawManagerImpl.drawBulletSpeed(this, ship.getBulletSpeed());
+		DrawManager.drawCurrentItems(this,itemManager);
 		// Call the method in DrawManagerImpl - Lee Hyun Woo TeamHud
 		DrawManagerImpl.drawTime(this, this.playTime);
 		// Call the method in DrawManagerImpl - Soomin Lee / TeamHUD
@@ -768,7 +788,8 @@ public class GameScreen extends Screen {
 		//Check item and ship collision
 		for(Item item : itemManager.items){
 			if (checkCollision(item, ship)) {
-				itemManager.OperateItem(item);
+				itemManager.itemSave(item);
+//				itemManager.OperateItem(item);
 				// CtrlS: Count coin
 				if (item.getSpriteType() == DrawManager.SpriteType.ItemCoin) coinItemsCollected++;
 				Core.getLogger().info("coin: " + coinItemsCollected);
