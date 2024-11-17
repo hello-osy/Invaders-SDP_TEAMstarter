@@ -190,7 +190,7 @@ public class SettingScreen extends Screen {
     private void draw() {
         drawManager.initDrawing(this);
 
-        drawManager.drawSettingTitle(this);
+        drawManager.drawSettingTitle(this, this.settingCode);
         drawManager.drawSettingMenu(this, this.settingCode, this.BGMCode, this.ESCode);
 
         super.drawPost();

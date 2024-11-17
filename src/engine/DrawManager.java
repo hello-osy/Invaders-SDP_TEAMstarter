@@ -596,10 +596,18 @@ public class DrawManager {
 		drawCenteredRegularString(screen, goMainString, screen.getHeight()
 				/ 4 * 2 + fontRegularMetrics.getHeight() * 10); // adjusted Height
 	}
-	public void drawSettingTitle(final Screen screen) {
+	public void drawSettingTitle(final Screen screen, final int option) {
 		String titleString = "Setting";
 		String instructionsString =
 				"up and down volume with z+x, c+v / play sound with space";
+		String plusString = "";
+		int bgmVolume = SoundManager.getInstance().getDisplayedBGMVolume();
+		if (option == 1) {
+			plusString = plusString + "Volume " + bgmVolume;
+		}
+		backBufferGraphics.setColor(Color.CYAN);
+		drawCenteredBigString(screen, plusString,
+				screen.getHeight() * 5 / 13);
 
 		backBufferGraphics.setColor(Color.GRAY);
 		drawCenteredRegularString(screen, instructionsString,

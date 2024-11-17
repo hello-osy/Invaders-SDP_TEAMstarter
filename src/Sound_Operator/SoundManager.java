@@ -18,6 +18,9 @@ public class SoundManager {
     static String[] BGMNameList;
     static String[] ESNameList;
     private static Logger logger;
+
+    private static int displayedBGMVolume;
+    private static int displayedESVolume;
 /**
 * Code Description
 * Base: BGM files are stored in res/sound/BGM
@@ -67,6 +70,7 @@ public class SoundManager {
                     this.preloadBGM(BGMFiles[idy][0], "res/Sound.assets/BGM/"+BGMFiles[idy][1], Float.parseFloat(BGMFiles[idy][2]));
                     idy += 1;
                 }
+                displayedBGMVolume = 50;
             }
         } catch (IOException e) {
             logger.info(String.valueOf(e));
@@ -230,6 +234,7 @@ public class SoundManager {
             FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             volumeControl.setValue(volumeControl.getValue() - i );
         }
+        displayedBGMVolume -= (int) i * 2;
     }
     public void upBGMVolume(String[] BGMNameList, float i) {
         for (String BGMName: BGMNameList) {
@@ -237,7 +242,9 @@ public class SoundManager {
             FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             volumeControl.setValue(volumeControl.getValue() + i );
         }
+        displayedBGMVolume += (int) i * 2;
     }
+    public int getDisplayedBGMVolume(){return displayedBGMVolume; };
 
     public int modifyESVolume(String name, float volume){
         if(volume > 2 || volume < -60){
