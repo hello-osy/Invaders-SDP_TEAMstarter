@@ -601,9 +601,13 @@ public class DrawManager {
 		String instructionsString =
 				"up and down volume with z+x, c+v / play sound with space";
 		String plusString = "";
-		int bgmVolume = SoundManager.getInstance().getDisplayedBGMVolume();
+		int BGMVolume = SoundManager.getInstance().getDisplayedBGMVolume();
+		int ESVolume = SoundManager.getInstance().getDisplayedESVolume();
 		if (option == 1) {
-			plusString = plusString + "Volume " + bgmVolume;
+			plusString = plusString + "BGMVolume " + BGMVolume;
+		}
+		else if (option == 2) {
+			plusString = plusString + "ESVolume " + ESVolume;
 		}
 		backBufferGraphics.setColor(Color.CYAN);
 		drawCenteredBigString(screen, plusString,

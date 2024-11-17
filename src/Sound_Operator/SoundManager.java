@@ -71,6 +71,7 @@ public class SoundManager {
                     idy += 1;
                 }
                 displayedBGMVolume = 50;
+                displayedESVolume = 50;
             }
         } catch (IOException e) {
             logger.info(String.valueOf(e));
@@ -259,7 +260,21 @@ public class SoundManager {
             return 0;
         }
     }
-
+    public void downESVolume(String[] ESNameList, float i) {
+        for (String ESName : ESNameList) {
+            float currentESVolume = Float.parseFloat(EffectSounds.get(ESName)[1]);
+            EffectSounds.get(ESName)[1] = String.valueOf(currentESVolume - i);
+        }
+        displayedESVolume -= (int) i * 2;
+    }
+    public void upESVolume(String[] ESNameList, float i) {
+        for (String ESName : ESNameList) {
+            float currentESVolume = Float.parseFloat(EffectSounds.get(ESName)[1]);
+            EffectSounds.get(ESName)[1] = String.valueOf(currentESVolume + i);
+        }
+        displayedESVolume += (int) i * 2;
+    }
+    public int getDisplayedESVolume(){return displayedESVolume; }
     // ksm
     public void playShipDieSounds() {
         playES("ally_airship_destroy_explosion");
