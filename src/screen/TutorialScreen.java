@@ -4,8 +4,11 @@ import java.awt.event.KeyEvent;
 import java.awt.Color;
 import engine.Core;
 import engine.DrawManager;
+import engine.DrawManager.SpriteType;
 import engine.InputManager;
+import entity.Entity;
 import Sound_Operator.SoundManager;
+import entity.EnemyShip;
 
 public class TutorialScreen extends Screen {
     private static final int SELECTION_TIME = 200;
@@ -61,6 +64,9 @@ public class TutorialScreen extends Screen {
     private void draw() {
         drawManager.initDrawing(this);
 
+        drawManager.backBufferGraphics.setColor(Color.BLACK);
+        drawManager.backBufferGraphics.fillRect(0, 0, this.width, this.height);
+
         switch (currentPage) {
             case 1:
                 drawBasicControls();
@@ -115,51 +121,75 @@ public class TutorialScreen extends Screen {
 
     private void drawEnemyTypes() {
         drawManager.drawCenteredBigString(this, "Enemy Types", 50);
-
-        String[] enemies = {
-                "REGULAR ENEMIES",
-                "Small ships that move in formation",
-                "Watch out for their bullet patterns!",
-                "",
-                "SPECIAL ENEMIES",
-                "Bonus UFO appears at the top",
-                "Destroy it quickly for extra points!",
-                "",
-                "BOSS BATTLES",
-                "Powerful enemies with unique attacks",
-                "Look for patterns to defeat them"
-        };
-
         int startY = 120;
-        for (String enemy : enemies) {
-            if (enemy.startsWith("REGULAR") || enemy.startsWith("SPECIAL") || enemy.startsWith("BOSS")) {
-                drawManager.backBufferGraphics.setColor(Color.GREEN);
-            } else {
-                drawManager.backBufferGraphics.setColor(Color.WHITE);
-            }
-            drawManager.drawCenteredRegularString(this, enemy, startY);
-            startY += 30;
-        }
+
+        // Basic Enemies
+        drawManager.backBufferGraphics.setColor(Color.GREEN);
+        drawManager.drawCenteredRegularString(this, "BASIC ENEMIES", startY);
+        startY += 40;
+
+        // Create and draw basic enemies
+        EnemyShip enemyA = new EnemyShip(width/3, startY, SpriteType.EnemyShipA1);
+        EnemyShip enemyB = new EnemyShip(width/2, startY, SpriteType.EnemyShipB1);
+        EnemyShip enemyC = new EnemyShip(2*width/3, startY, SpriteType.EnemyShipC1);
+
+        // Draw basic enemies
+        drawManager.drawEntity(enemyA, enemyA.getPositionX(), enemyA.getPositionY());
+        drawManager.drawEntity(enemyB, enemyB.getPositionX(), enemyB.getPositionY());
+        drawManager.drawEntity(enemyC, enemyC.getPositionX(), enemyC.getPositionY());
+
+        // Draw descriptions
+        startY += 50;
+        drawManager.backBufferGraphics.setColor(Color.WHITE);
+        drawManager.drawCenteredRegularString(this, "Type A: 1 point", startY);
+        startY += 30;
+        drawManager.drawCenteredRegularString(this, "Type B: 2 points", startY);
+        startY += 30;
+        drawManager.drawCenteredRegularString(this, "Type C: 3 points", startY);
+
+        // Special Enemies
+        startY += 50;
+        drawManager.backBufferGraphics.setColor(Color.GREEN);
+        drawManager.drawCenteredRegularString(this, "SPECIAL ENEMIES", startY);
+        startY += 40;
+
+        // Create and draw explosive enemy
+        EnemyShip explosive = new EnemyShip(width/3, startY, SpriteType.ExplosiveEnemyShip1);
+        drawManager.drawEntity(explosive, explosive.getPositionX(), explosive.getPositionY());
+
+        // Create and draw UFO
+        EnemyShip ufo = new EnemyShip();  // Special UFO constructor
+        ufo.setPositionX(2*width/3);
+        ufo.setPositionY(startY);
+        drawManager.drawEntity(ufo, ufo.getPositionX(), ufo.getPositionY());
+
+        // Draw special enemies descriptions
+        startY += 50;
+        drawManager.backBufferGraphics.setColor(Color.WHITE);
+        drawManager.drawCenteredRegularString(this, "Explosive: 5 points - Chain reaction", startY);
+        startY += 30;
+        drawManager.drawCenteredRegularString(this, "UFO: 10 points - Bonus enemy", startY);
     }
 
     private void drawPowerUpsAndItems() {
         drawManager.drawCenteredBigString(this, "Power-ups & Items", 50);
 
+        int startY = 120;
         String[] items = {
                 "POWER-UPS",
-                "bullet count up - increase the number of bullets",
-                "ship speed up - increase the speed of ship movement",
-                "attack speed up - reduce attack delay",
-                "coin gain up - increase acquisition in treatment",
+                "",
+                "Shield (Barrier) - Protects from attacks",
+                "Bullet Pierce - Penetrates enemies",
+                "Speed Up - Increases movement speed",
+                "Bomb - Area explosion damage",
                 "",
                 "COLLECTIBLES",
-                "Coins - Collect to upgrade your ship",
-                "Gems - Special currency for rare upgrades",
                 "",
-                "Use power-ups wisely to survive longer!"
+                "Coins - Currency for upgrades",
+                "Gems - Special upgrade currency",
+                "Hearts - Restore lives"
         };
 
-        int startY = 120;
         for (String item : items) {
             if (item.startsWith("POWER-UPS") || item.startsWith("COLLECTIBLES")) {
                 drawManager.backBufferGraphics.setColor(Color.GREEN);
@@ -174,23 +204,24 @@ public class TutorialScreen extends Screen {
     private void drawScoringAndTips() {
         drawManager.drawCenteredBigString(this, "Scoring & Tips", 50);
 
+        int startY = 120;
         String[] tips = {
-                "SCORING SYSTEM",
-                "Regular Enemy: 1 points",
-                "Special UFO: 2 points",
-                "Boss Defeat: 3 points",
-                "Base enemy points × Current level = Final score awarded",
+                "SCORING",
                 "",
-                "SURVIVAL TIPS",
-                "Stay mobile to avoid enemy fire",
-                "Clear bottom rows first",
-                "Save power-ups for tough situations",
-                "Watch out for enemy formation changes!"
+                "Regular Enemy: 1-3 points",
+                "Explosive Enemy: 5 points",
+                "Bonus UFO: 10 points",
+                "",
+                "TIPS",
+                "",
+                "- Watch enemy patterns",
+                "- Clear bottom enemies first",
+                "- Save power-ups for tough situations",
+                "- Aim for high accuracy bonus"
         };
 
-        int startY = 120;
         for (String tip : tips) {
-            if (tip.startsWith("SCORING") || tip.startsWith("SURVIVAL")) {
+            if (tip.startsWith("SCORING") || tip.startsWith("TIPS")) {
                 drawManager.backBufferGraphics.setColor(Color.GREEN);
             } else {
                 drawManager.backBufferGraphics.setColor(Color.WHITE);
