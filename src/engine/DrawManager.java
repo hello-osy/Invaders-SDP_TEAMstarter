@@ -599,23 +599,29 @@ public class DrawManager {
 	public void drawSettingTitle(final Screen screen, final int option) {
 		String titleString = "Setting";
 		String instructionsString =
-				"up and down volume with z+x, c+v / play sound with space";
+				"turn up and down volume with z+x, c+v";
+		String instructionsString2 = "- press space to play sound -"
+				;
 		String plusString = "";
 		int BGMVolume = SoundManager.getInstance().getDisplayedBGMVolume();
 		int ESVolume = SoundManager.getInstance().getDisplayedESVolume();
 		if (option == 1) {
-			plusString = plusString + "BGMVolume " + BGMVolume;
+			plusString = plusString + "z-(   BGM Volume " + BGMVolume + "%   )-x";
 		}
 		else if (option == 2) {
-			plusString = plusString + "ESVolume " + ESVolume;
+			plusString = plusString + "z-(   ES Volume " + ESVolume + "%   )-x";
 		}
 		backBufferGraphics.setColor(Color.CYAN);
 		drawCenteredBigString(screen, plusString,
-				screen.getHeight() * 5 / 13);
+				screen.getHeight() * 6 / 14);
 
 		backBufferGraphics.setColor(Color.GRAY);
 		drawCenteredRegularString(screen, instructionsString,
 				screen.getHeight() * 3 / 10);
+		backBufferGraphics.setColor(Color.GRAY);
+
+		drawCenteredRegularString(screen, instructionsString2,
+				screen.getHeight() * 3 / 10 + fontRegularMetrics.getHeight());
 
 		backBufferGraphics.setColor(Color.GREEN);
 		drawCenteredBigString(screen, titleString, screen.getHeight() / 4);
@@ -632,7 +638,7 @@ public class DrawManager {
 			backBufferGraphics.setColor(Color.WHITE);
 		BGMString = BGMString + " (" +BGMNameList[option2] + ")";
 		drawCenteredRegularString(screen, BGMString, screen.getHeight()
-				/ 4 * 2);
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 2);
 
 		if (option == 2)
 			backBufferGraphics.setColor(Color.CYAN);
@@ -640,7 +646,7 @@ public class DrawManager {
 			backBufferGraphics.setColor(Color.WHITE);
 		ESString = ESString + " (" +ESNameList[option3] + ")";
 		drawCenteredRegularString(screen, ESString, screen.getHeight()
-				/ 4 * 2 + fontRegularMetrics.getHeight() * 2); // adjusted Height
+				/ 4 * 2 + fontRegularMetrics.getHeight() * 4); // adjusted Height
 
 		// Go main
 		if (option == 0)
