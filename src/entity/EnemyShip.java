@@ -47,7 +47,8 @@ public class EnemyShip extends Entity {
 	/** Speed reduction or increase multiplier (1.0 means normal speed). */
 	private double speedMultiplier;
 	private double defaultSpeedMultiplier;
-
+	/** Margin on the bottom of the screen. */
+	private static final int BOTTOM_MARGIN = 200;
 	/**
 	 * Constructor, establishes the ship's properties.
 	 *
@@ -131,9 +132,18 @@ public class EnemyShip extends Entity {
 	 *            Distance to move in the Y axis.
 	 */
 	public final void move(final int distanceX, final int distanceY) {
-		this.positionX += distanceX * this.getSpeedMultiplier(); // team Inventory
-		this.positionY += distanceY;
+		// Core 클래스의 getHeight() 메서드를 사용하여 화면 높이 가져오기
+		int screenHeight = Core.getHeight();
+
+		// 하단 제한 적용
+		if (this.positionY + distanceY < screenHeight - BOTTOM_MARGIN) {
+			this.positionY += distanceY;
+		}
+		this.positionX += distanceX * this.getSpeedMultiplier();
 	}
+
+
+
 
 	/**
 	 * Updates attributes, mainly used for animation purposes.

@@ -530,4 +530,6 @@ public final class Core {
     public static UpgradeManager getUpgradeManager() {
         return UpgradeManager.getInstance();
     }
+
+    public static int getHeight() { return HEIGHT; }
 }
