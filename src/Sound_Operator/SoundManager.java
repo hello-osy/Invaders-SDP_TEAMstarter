@@ -61,13 +61,13 @@ public class SoundManager {
                     ESFiles[idx][0] = data[1];
                     ESFiles[idx][1] = data[2];
                     ESFiles[idx][2] = data[3];
-                    this.presetEffectSound(ESFiles[idx][0], "res/Sound.assets/ES/"+ESFiles[idx][1], Float.parseFloat(ESFiles[idx][2]));
+                    this.presetEffectSound(ESFiles[idx][0], "res/Sound.assets/ES/"+ESFiles[idx][1], Float.parseFloat(ESFiles[idx][2])-25);
                     idx += 1;
                 }else if(data[0].equals("bgm")){
                     BGMFiles[idy][0] = data[1];
                     BGMFiles[idy][1] = data[2];
                     BGMFiles[idy][2] = data[3];
-                    this.preloadBGM(BGMFiles[idy][0], "res/Sound.assets/BGM/"+BGMFiles[idy][1], Float.parseFloat(BGMFiles[idy][2]));
+                    this.preloadBGM(BGMFiles[idy][0], "res/Sound.assets/BGM/"+BGMFiles[idy][1], Float.parseFloat(BGMFiles[idy][2])-25);
                     idy += 1;
                 }
                 displayedBGMVolume = 50;
@@ -230,20 +230,45 @@ public class SoundManager {
         return 0;
     }
     public void downBGMVolume(String[] BGMNameList, float i) {
-        for (String BGMName: BGMNameList) {
-            Clip clip = BGMs.get(BGMName);
-            FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            volumeControl.setValue(volumeControl.getValue() - i );
+        int downPercentage = (int) i * 2;
+        if (displayedBGMVolume - downPercentage >= 0) {
+            for (String BGMName : BGMNameList) {
+                Clip clip = BGMs.get(BGMName);
+                FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                volumeControl.setValue(volumeControl.getValue() - i);
+            }
+            if (displayedBGMVolume - downPercentage == 0) {
+                for (String BGMName : BGMNameList) {
+                    Clip clip = BGMs.get(BGMName);
+                    FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                    volumeControl.setValue(volumeControl.getValue() - 20);
+                }
+            }
+            displayedBGMVolume -= downPercentage;
         }
-        displayedBGMVolume -= (int) i * 2;
+        else
+            logger.info("Error : volume is out of index!!!!!");
     }
     public void upBGMVolume(String[] BGMNameList, float i) {
-        for (String BGMName: BGMNameList) {
-            Clip clip = BGMs.get(BGMName);
-            FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            volumeControl.setValue(volumeControl.getValue() + i );
+        int upPercentage = (int) i * 2;
+        if (displayedBGMVolume + upPercentage <= 100) {
+            for (String BGMName: BGMNameList) {
+                Clip clip = BGMs.get(BGMName);
+                FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                volumeControl.setValue(volumeControl.getValue() + i);
+            }
+            if (displayedBGMVolume == 0) {
+                for (String BGMName: BGMNameList) {
+                    Clip clip = BGMs.get(BGMName);
+                    FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                    volumeControl.setValue(volumeControl.getValue() + 20);
+                }
+            }
+            displayedBGMVolume += upPercentage;
         }
-        displayedBGMVolume += (int) i * 2;
+        else
+            logger.info("Error : volume is out of index!!!!!");
+
     }
     public int getDisplayedBGMVolume(){return displayedBGMVolume; };
 
@@ -261,18 +286,41 @@ public class SoundManager {
         }
     }
     public void downESVolume(String[] ESNameList, float i) {
-        for (String ESName : ESNameList) {
-            float currentESVolume = Float.parseFloat(EffectSounds.get(ESName)[1]);
-            EffectSounds.get(ESName)[1] = String.valueOf(currentESVolume - i);
+        int downPercentage = (int) i * 2;
+        if (displayedESVolume - downPercentage >= 0) {
+            for (String ESName : ESNameList) {
+                float currentESVolume = Float.parseFloat(EffectSounds.get(ESName)[1]);
+                EffectSounds.get(ESName)[1] = String.valueOf(currentESVolume - i);
+            }
+            if (displayedESVolume - downPercentage == 0) {
+                for (String ESName : ESNameList) {
+                    float currentESVolume = Float.parseFloat(EffectSounds.get(ESName)[1]);
+                    EffectSounds.get(ESName)[1] = String.valueOf(currentESVolume - 25);
+                }
+            }
+            displayedESVolume -= downPercentage;
         }
-        displayedESVolume -= (int) i * 2;
+        else
+            logger.info("Error : volume is out of index!!!!!");
     }
     public void upESVolume(String[] ESNameList, float i) {
-        for (String ESName : ESNameList) {
-            float currentESVolume = Float.parseFloat(EffectSounds.get(ESName)[1]);
-            EffectSounds.get(ESName)[1] = String.valueOf(currentESVolume + i);
+        int upPercentage = (int) i * 2;
+        if (displayedESVolume + upPercentage <= 100) {
+            for (String ESName : ESNameList) {
+                float currentESVolume = Float.parseFloat(EffectSounds.get(ESName)[1]);
+                EffectSounds.get(ESName)[1] = String.valueOf(currentESVolume + i);
+            }
+            if (displayedESVolume == 0) {
+                for (String ESName : ESNameList) {
+                    float currentESVolume = Float.parseFloat(EffectSounds.get(ESName)[1]);
+                    EffectSounds.get(ESName)[1] = String.valueOf(currentESVolume + 25);
+                }
+            }
+            displayedESVolume += upPercentage;
         }
-        displayedESVolume += (int) i * 2;
+        else
+            logger.info("Error : volume is out of index!!!!!");
+
     }
     public int getDisplayedESVolume(){return displayedESVolume; }
     // ksm
