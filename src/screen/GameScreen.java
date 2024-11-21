@@ -154,7 +154,7 @@ public class GameScreen extends Screen {
 
 	/** CtrlS: Count the number of coin collected in game */
 	private int coinItemsCollected;
-
+	private int y=0;
 	/**
 	 * Constructor, establishes the properties of the screen.
 	 *
@@ -448,7 +448,7 @@ public class GameScreen extends Screen {
             try { //Team Clove
 				statistics.comHighestLevel(level);
 				statistics.addBulletShot(bulletsShot);
-				statistics.addShipsDestroyed(shipsDestroyed);
+				statistics.addShipsDestroyed(shipsDestroyed-y);
 				achievementConditions.updateStat(statistics);
 
 				achievementConditions.onKill();
@@ -457,8 +457,8 @@ public class GameScreen extends Screen {
 				achievementConditions.killStreak();
 				achievementConditions.fastKill(fastKill);
 				achievementConditions.score(score);
-				bulletsShot=0;
-				shipsDestroyed=0;
+
+				y=shipsDestroyed;
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
