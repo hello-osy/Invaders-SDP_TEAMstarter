@@ -71,9 +71,8 @@ public class SettingScreen extends Screen {
             if (inputManager.isKeyDown(KeyEvent.VK_Z)) {
                 if (settingCode == 1)
                     sm.downBGMVolume(BGMNameList,1);
-
-//                else if (settingCode == 2)
-//                    sm.ESVolume();
+                else if (settingCode == 2)
+                    sm.downESVolume(ESNameList, 1);
                 this.selectionCooldown.reset();
                 // Sound Operator
                 SoundManager.getInstance().playES("menuSelect_es");
@@ -81,8 +80,8 @@ public class SettingScreen extends Screen {
             if (inputManager.isKeyDown(KeyEvent.VK_C)) {
                 if (settingCode == 1)
                     sm.downBGMVolume(BGMNameList, 5);
-//                else if (settingCode == 2)
-//                    downDownESVolume();
+                else if (settingCode == 2)
+                    sm.downESVolume(ESNameList, 5);;
                 this.selectionCooldown.reset();
                 // Sound Operator
                 SoundManager.getInstance().playES("menuSelect_es");
@@ -90,8 +89,8 @@ public class SettingScreen extends Screen {
             if (inputManager.isKeyDown(KeyEvent.VK_X)) {
                 if (settingCode == 1)
                     sm.upBGMVolume(BGMNameList, 1);
-//                else if (settingCode == 2)
-//                    upESVolume();
+                else if (settingCode == 2)
+                    sm.upESVolume(ESNameList, 1);
                 this.selectionCooldown.reset();
                 // Sound Operator
                 SoundManager.getInstance().playES("menuSelect_es");
@@ -99,8 +98,8 @@ public class SettingScreen extends Screen {
             if (inputManager.isKeyDown(KeyEvent.VK_V)) {
                 if (settingCode == 1)
                     sm.upBGMVolume(BGMNameList, 5);
-//                else if (settingCode == 2)
-//                    upUpESVolume();
+                else if (settingCode == 2)
+                    sm.upESVolume(ESNameList, 5);
                 this.selectionCooldown.reset();
 
                 // Sound Operator
@@ -190,7 +189,7 @@ public class SettingScreen extends Screen {
     private void draw() {
         drawManager.initDrawing(this);
 
-        drawManager.drawSettingTitle(this);
+        drawManager.drawSettingTitle(this, this.settingCode);
         drawManager.drawSettingMenu(this, this.settingCode, this.BGMCode, this.ESCode);
 
         super.drawPost();

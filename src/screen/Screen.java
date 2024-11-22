@@ -136,6 +136,9 @@ public class Screen {
 	public final int getHeight() {
 		return this.height;
 	}
+	public final int getReturnCode() {
+		return this.returnCode;
+	}
 	public final boolean isTwoPlayerMode() {
 		return this.isTwoPlayerMode;
 	}

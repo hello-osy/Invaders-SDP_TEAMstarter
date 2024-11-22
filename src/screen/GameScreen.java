@@ -154,7 +154,7 @@ public class GameScreen extends Screen {
 
 	/** CtrlS: Count the number of coin collected in game */
 	private int coinItemsCollected;
-
+	private int y=0;
 	/**
 	 * Constructor, establishes the properties of the screen.
 	 *
@@ -282,6 +282,13 @@ public class GameScreen extends Screen {
 	 */
 	protected void update() {
 		super.update();
+
+		// ESC 키 입력 감지
+		if (inputManager.isKeyDown(KeyEvent.VK_ESCAPE)) {
+			this.isRunning = false; // 루프 종료
+			this.returnCode = 1; // TitleScreen으로 돌아가는 코드 설정
+			return; // update() 메서드 즉시 종료
+		}
 
 		if (this.inputDelay.checkFinished() && !this.levelFinished) {
 			// --- OBSTACLES
@@ -448,7 +455,7 @@ public class GameScreen extends Screen {
             try { //Team Clove
 				statistics.comHighestLevel(level);
 				statistics.addBulletShot(bulletsShot);
-				statistics.addShipsDestroyed(shipsDestroyed);
+				statistics.addShipsDestroyed(shipsDestroyed-y);
 				achievementConditions.updateStat(statistics);
 
 				achievementConditions.onKill();
@@ -457,8 +464,8 @@ public class GameScreen extends Screen {
 				achievementConditions.killStreak();
 				achievementConditions.fastKill(fastKill);
 				achievementConditions.score(score);
-				bulletsShot=0;
-				shipsDestroyed=0;
+
+				y=shipsDestroyed;
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -526,6 +533,7 @@ public class GameScreen extends Screen {
 		DrawManagerImpl.drawTime(this, this.playTime);
 		// Call the method in DrawManagerImpl - Soomin Lee / TeamHUD
 		drawManager.drawItem(this); // HUD team - Jo Minseo
+		drawManager.drawMessage(this, "Press ESC to quit");
 
 		if(player2 != null){
 			DrawManagerImpl.drawBulletSpeed2P(this, player2.getBulletSpeed());
