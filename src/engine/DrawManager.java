@@ -1215,4 +1215,13 @@ public class DrawManager {
 					+ Core.getUpgradeManager().whatMoney(count,number);
 		}
 	}
+
+	public void drawMessage(final Screen screen, final String message) {
+		backBufferGraphics.setFont(fontRegular);
+		backBufferGraphics.setColor(Color.WHITE);
+		int x = screen.getWidth() - fontRegularMetrics.stringWidth(message); // 화면의 오른쪽에 위치
+		int y = 25; // drawLives와 같은 높이
+		backBufferGraphics.drawString(message, x, y);
+	}
+
 }

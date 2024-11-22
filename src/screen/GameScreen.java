@@ -283,6 +283,13 @@ public class GameScreen extends Screen {
 	protected void update() {
 		super.update();
 
+		// ESC 키 입력 감지
+		if (inputManager.isKeyDown(KeyEvent.VK_ESCAPE)) {
+			this.isRunning = false; // 루프 종료
+			this.returnCode = 1; // TitleScreen으로 돌아가는 코드 설정
+			return; // update() 메서드 즉시 종료
+		}
+
 		if (this.inputDelay.checkFinished() && !this.levelFinished) {
 			// --- OBSTACLES
 			if (this.obstacleSpawnCooldown.checkFinished()) {
@@ -526,6 +533,7 @@ public class GameScreen extends Screen {
 		DrawManagerImpl.drawTime(this, this.playTime);
 		// Call the method in DrawManagerImpl - Soomin Lee / TeamHUD
 		drawManager.drawItem(this); // HUD team - Jo Minseo
+		drawManager.drawMessage(this, "Press ESC to quit");
 
 		if(player2 != null){
 			DrawManagerImpl.drawBulletSpeed2P(this, player2.getBulletSpeed());

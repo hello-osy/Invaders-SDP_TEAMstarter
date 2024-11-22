@@ -65,7 +65,7 @@ public class EnemyShipFormation implements Iterable<EnemyShip> {
 	/** Margin on the sides of the screen. */
 	private static final int SIDE_MARGIN = 20;
 	/** Margin on the bottom of the screen. */
-	private static final int BOTTOM_MARGIN = 80;
+	private static final int BOTTOM_MARGIN = 200;
 	/** Distance to go down each pass. */
 	private static final int DESCENT_DISTANCE = 20;
 	/** Minimum speed allowed. */
