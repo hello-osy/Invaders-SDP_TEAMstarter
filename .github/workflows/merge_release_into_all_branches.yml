@@ -1,0 +1,82 @@
+name: Merge Release into All Branches
+
+on:
+  workflow_dispatch: # 직접 실행 버튼 추가
+
+jobs:
+  merge-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 코드 체크아웃
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Git 사용자 설정
+      - name: Set Git user
+        run: |
+          git config user.name "hello-osy"
+          git config user.email "hello_osy@naver.com"
+
+      # 3. Merge release into develop
+      - name: Merge release into develop
+        id: develop
+        run: |
+          git checkout develop
+          git merge origin/release || echo "merge_failed" > status_develop.txt
+        continue-on-error: true
+
+      # 4. Merge release into feature/graphics
+      - name: Merge release into feature/graphics
+        id: graphics
+        run: |
+          git checkout feature/graphics
+          git merge origin/release || echo "merge_failed" > status_graphics.txt
+        continue-on-error: true
+
+      # 5. Merge release into feature/physics
+      - name: Merge release into feature/physics
+        id: physics
+        run: |
+          git checkout feature/physics
+          git merge origin/release || echo "merge_failed" > status_physics.txt
+        continue-on-error: true
+
+      # 6. Merge release into feature/sfx
+      - name: Merge release into feature/sfx
+        id: sfx
+        run: |
+          git checkout feature/sfx
+          git merge origin/release || echo "merge_failed" > status_sfx.txt
+        continue-on-error: true
+
+      # 7. Merge release into feature/system
+      - name: Merge release into feature/system
+        id: system
+        run: |
+          git checkout feature/system
+          git merge origin/release || echo "merge_failed" > status_system.txt
+        continue-on-error: true
+
+      # 8. Check all merges and create issue
+      - name: Check merge results and create issue
+        run: |
+          if [[ -f status_develop.txt || -f status_graphics.txt || -f status_physics.txt || -f status_sfx.txt || -f status_system.txt ]]; then
+            echo "Merge failed for one or more branches:" > result.txt
+            if [[ -f status_develop.txt ]]; then echo "- develop" >> result.txt; fi
+            if [[ -f status_graphics.txt ]]; then echo "- feature/graphics" >> result.txt; fi
+            if [[ -f status_physics.txt ]]; then echo "- feature/physics" >> result.txt; fi
+            if [[ -f status_sfx.txt ]]; then echo "- feature/sfx" >> result.txt; fi
+            if [[ -f status_system.txt ]]; then echo "- feature/system" >> result.txt; fi
+            exit 1
+          else
+            echo "All branches successfully merged with the release branch." > result.txt
+          fi
+
+      # 9. Create issue for result
+      - name: Create merge result issue
+        if: success()
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: 'Merge Result for Release Branch'
+          content-filepath: result.txt
