@@ -1,8 +1,7 @@
 name: Merge Features into Develop
 
 on:
-  schedule:
-    - cron: '0 0 * * FRI' # 매주 금요일 오전 9시 KST (UTC+0 기준으로 0시)
+  workflow_dispatch: # 직접 실행 버튼 추가
 
 jobs:
   merge-features:
