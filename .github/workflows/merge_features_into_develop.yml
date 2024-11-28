@@ -1,0 +1,70 @@
+name: Merge Features into Develop
+
+on:
+  schedule:
+    - cron: '0 0 * * FRI' # 매주 금요일 오전 9시 KST (UTC+0 기준으로 0시)
+
+jobs:
+  merge-features:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 코드 체크아웃
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Git 사용자 설정
+      - name: Set Git user
+        run: |
+          git config user.name "hello-osy"
+          git config user.email "hello_osy@naver.com"
+
+      # 3. Merge feature/graphics
+      - name: Merge feature/graphics into develop
+        id: graphics
+        run: |
+          git checkout develop
+          git merge origin/feature/graphics
+        continue-on-error: true
+
+      # 4. Merge feature/physics
+      - name: Merge feature/physics into develop
+        id: physics
+        run: |
+          git merge origin/feature/physics
+        continue-on-error: true
+
+      # 5. Merge feature/sfx
+      - name: Merge feature/sfx into develop
+        id: sfx
+        run: |
+          git merge origin/feature/sfx
+        continue-on-error: true
+
+      # 6. Merge feature/system
+      - name: Merge feature/system into develop
+        id: system
+        run: |
+          git merge origin/feature/system
+        continue-on-error: true
+
+      # 7. Check all merges and create issue
+      - name: Check merge results and create issue
+        run: |
+          if [[ "${{ steps.graphics.outcome }}" == "failure" ]] || \
+             [[ "${{ steps.physics.outcome }}" == "failure" ]] || \
+             [[ "${{ steps.sfx.outcome }}" == "failure" ]] || \
+             [[ "${{ steps.system.outcome }}" == "failure" ]]; then
+            echo "Merge failed for one or more feature branches." > result.txt
+            exit 1
+          else
+            echo "develop branch successfully merged with all feature branches." > result.txt
+          fi
+
+      # 8. Create issue for result
+      - name: Create merge result issue
+        if: success()
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: 'Merge Result for Develop'
+          content-filepath: result.txt
