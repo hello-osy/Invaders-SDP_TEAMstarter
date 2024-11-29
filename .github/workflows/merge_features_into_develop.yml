@@ -23,28 +23,28 @@ jobs:
         id: graphics
         run: |
           git checkout develop
-          git merge origin/feature/graphics
+          git merge feature/graphics
         continue-on-error: true
 
       # 4. Merge feature/physics
       - name: Merge feature/physics into develop
         id: physics
         run: |
-          git merge origin/feature/physics
+          git merge feature/physics
         continue-on-error: true
 
       # 5. Merge feature/sfx
       - name: Merge feature/sfx into develop
         id: sfx
         run: |
-          git merge origin/feature/sfx
+          git merge feature/sfx
         continue-on-error: true
 
       # 6. Merge feature/system
       - name: Merge feature/system into develop
         id: system
         run: |
-          git merge origin/feature/system
+          git merge feature/system
         continue-on-error: true
 
       # 7. Check all merges and create issue
