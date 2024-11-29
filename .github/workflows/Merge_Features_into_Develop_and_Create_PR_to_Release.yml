@@ -1,4 +1,4 @@
-name: Merge Features into Develop
+name: Merge Features into Develop and Create PR to Release
 
 on:
   workflow_dispatch: # 직접 실행 버튼 추가
