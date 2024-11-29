@@ -17,12 +17,16 @@ jobs:
         run: |
           git config user.name "hello-osy"
           git config user.email "hello_osy@naver.com"
-
+      
+      - name: git fetch
+        run: |
+          git fetch origin
+          
       # 3. Merge feature/graphics
       - name: Merge feature/graphics into develop
         id: graphics
         run: |
-          git checkout develop
+          git checkout -b develop origin/develop
           git merge feature/graphics
         continue-on-error: true
 
