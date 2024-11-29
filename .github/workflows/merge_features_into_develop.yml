@@ -71,3 +71,7 @@ jobs:
         with:
           title: 'Merge Result for Develop'
           content-filepath: result.txt
+
+      - name: Push develop
+        run: |
+          git push origin develop
