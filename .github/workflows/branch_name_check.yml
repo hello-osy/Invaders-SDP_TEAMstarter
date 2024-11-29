@@ -1,0 +1,40 @@
+name: Test Branch Existence
+
+on:
+  workflow_dispatch: # 수동 실행 트리거
+
+jobs:
+  check-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 코드 체크아웃
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Fetch remote branches
+      - name: Fetch remote branches
+        run: git fetch origin
+
+      # 3. Check if branches exist
+      - name: Verify branch existence
+        run: |
+          branches=("develop" "feature/graphics" "feature/physics" "feature/sfx" "feature/system")
+          for branch in "${branches[@]}"; do
+            if git show-ref --verify --quiet refs/remotes/origin/$branch; then
+              echo "Branch '$branch' exists."
+            else
+              echo "Branch '$branch' does not exist." >> missing_branches.txt
+            fi
+          done
+
+      # 4. Output missing branches
+      - name: Output missing branches
+        if: success()
+        run: |
+          if [[ -f missing_branches.txt ]]; then
+            echo "The following branches are missing:"
+            cat missing_branches.txt
+          else
+            echo "All branches exist."
+          fi
