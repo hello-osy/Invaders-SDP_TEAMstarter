@@ -1,0 +1,72 @@
+name: Merge Release into All Branches
+
+on:
+  workflow_dispatch: # 직접 실행 버튼 추가
+
+jobs:
+  merge-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 코드 체크아웃
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Git 사용자 설정
+      - name: Set Git user
+        run: |
+          git config user.name "hello-osy"
+          git config user.email "hello_osy@naver.com"
+
+      # 3. Fetch remote branches
+      - name: Fetch remote branches
+        run: git fetch --all
+
+      # 4. Define branches to merge into
+      - name: Define branches
+        id: branches
+        run: |
+          echo "branches=develop feature/graphics feature/physics feature/sfx feature/system" >> $GITHUB_ENV
+
+      # 5. Merge release into each branch and push
+      - name: Merge release into all branches and push
+        run: |
+          for branch in ${{ env.branches }}; do
+            echo "Processing branch: $branch"
+
+            # Checkout or create local branch based on remote branch
+            if git show-ref --verify --quiet refs/heads/$branch; then
+              git checkout $branch
+            else
+              git checkout -b $branch origin/$branch || git checkout -b $branch
+            fi
+
+            # Merge release into the branch
+            if ! git merge origin/release; then
+              echo "$branch" >> merge_failed.txt
+            else
+              echo "Successfully merged release into $branch. Pushing changes..."
+              git push origin $branch
+            fi
+          done
+
+      # 6. Check merge results
+      - name: Check merge results
+        id: check-results
+        run: |
+          if [[ -f merge_failed.txt ]]; then
+            echo "Merge failed for the following branches:" > result.txt
+            cat merge_failed.txt >> result.txt
+            exit 1
+          else
+            echo "All branches successfully merged with the release branch." > result.txt
+          fi
+
+      # 7. Create issue for result
+      - name: Create merge result issue
+        if: always()
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: 'Merge Result for Release Branch'
+          content-filepath: result.txt
+          labels: 'merge, automation'
