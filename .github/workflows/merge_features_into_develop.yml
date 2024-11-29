@@ -18,11 +18,12 @@ jobs:
           git config user.name "hello-osy"
           git config user.email "hello_osy@naver.com"
       
-      - name: git fetch
+      # 3. Fetch remote branches
+      - name: Fetch remote branches
         run: |
           git fetch origin
           
-      # 3. Merge feature/graphics
+      # 4. Merge feature/graphics
       - name: Merge feature/graphics into develop
         id: graphics
         run: |
@@ -30,48 +31,53 @@ jobs:
           git merge origin/feature/graphics
         continue-on-error: true
 
-      # 4. Merge feature/physics
+      # 5. Merge feature/physics
       - name: Merge feature/physics into develop
         id: physics
         run: |
           git merge origin/feature/physics
         continue-on-error: true
 
-      # 5. Merge feature/sfx
+      # 6. Merge feature/sfx
       - name: Merge feature/sfx into develop
         id: sfx
         run: |
           git merge origin/feature/sfx
         continue-on-error: true
 
-      # 6. Merge feature/system
+      # 7. Merge feature/system
       - name: Merge feature/system into develop
         id: system
         run: |
           git merge origin/feature/system
         continue-on-error: true
 
-      # 7. Check all merges and create issue
-      - name: Check merge results and create issue
+      # 8. Check all merges
+      - name: Check merge results
+        id: check-results
         run: |
-          if [[ "${{ steps.graphics.outcome }}" == "failure" ]] || \
-             [[ "${{ steps.physics.outcome }}" == "failure" ]] || \
-             [[ "${{ steps.sfx.outcome }}" == "failure" ]] || \
-             [[ "${{ steps.system.outcome }}" == "failure" ]]; then
-            echo "Merge failed for one or more feature branches." > result.txt
+          if [[ -f result.txt ]]; then
+            echo "Some merges failed. See details in result.txt."
             exit 1
           else
             echo "develop branch successfully merged with all feature branches." > result.txt
           fi
 
-      # 8. Create issue for result
-      - name: Create merge result issue
-        if: success()
-        uses: peter-evans/create-issue-from-file@v3
-        with:
-          title: 'Merge Result for Develop'
-          content-filepath: result.txt
-
+      # 9. Push develop branch (only if all merges succeeded)
       - name: Push develop
+        if: steps.check-results.outcome == 'success'
         run: |
           git push origin develop
+
+      # 10. Create PR from develop to release (only if all merges succeeded)
+      - name: Create PR to release
+        if: steps.check-results.outcome == 'success'
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Merge Develop into Release"
+          branch: develop
+          base: release
+          title: "PR: Merge Develop into Release"
+          body: |
+            This PR merges the latest changes from `develop` into `release`.
