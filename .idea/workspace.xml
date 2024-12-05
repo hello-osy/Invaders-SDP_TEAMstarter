@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="" />
+    <list default="true" id="c2d1df9e-7633-4932-824c-2c1f0ea58909" name="변경" comment="SCRUM - 82 ScoreScreen Bug fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Invaders-SDP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Invaders-SDP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screen/MerchantScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/screen/MerchantScreen.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -52,16 +57,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Core.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/system&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;애플리케이션.Core.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Core.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.AchievementConditionsTest.executor": "Run",
+    "JUnit.AchievementManagerTest.executor": "Run",
+    "JUnit.AchievementManagerTest.testUpdateAchievements.executor": "Run",
+    "JUnit.AchievementTest.executor": "Run",
+    "JUnit.MerchantScreenTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "라이브러리",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "애플리케이션.Core.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="clove" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="screen" />
       <recent name="clove" />
     </key>
   </component>
@@ -81,9 +108,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AchievementManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Invaders-SDP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="clove.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="clove" />
+      <option name="MAIN_CLASS_NAME" value="clove.AchievementManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AchievementManagerTest.testUpdateAchievements" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Invaders-SDP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="clove.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="clove" />
+      <option name="MAIN_CLASS_NAME" value="clove.AchievementManagerTest" />
+      <option name="METHOD_NAME" value="testUpdateAchievements" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Core" />
+        <item itemvalue="JUnit.AchievementManagerTest" />
+        <item itemvalue="JUnit.AchievementManagerTest.testUpdateAchievements" />
       </list>
     </recent_temporary>
   </component>
@@ -251,6 +310,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="system_1" />
     <MESSAGE value="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added." />
-    <option name="LAST_COMMIT_MESSAGE" value="SCRUM-15&#10;- New Item : Magnet(when used, gets all items floating on current gamescreen)&#10;- New function : Now some items(Bomb, Barrier, Magnet) are can be used by executing specific command. add new command for this function.&#10;- New HUD : add new HUD for new function added." />
+    <MESSAGE value="SCRUM - 82 ScoreScreen Bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="SCRUM - 82 ScoreScreen Bug fix" />
   </component>
 </project>

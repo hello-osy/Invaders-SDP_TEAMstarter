@@ -26,6 +26,14 @@ public class MerchantScreen extends Screen {
     private int coin;
     private int gem;
 
+    public int getMerchantState() {
+        return merchantState;
+    }
+
+    public void setMerchantState(int merchantState) {
+        this.merchantState = merchantState;
+    }
+
     private int merchantState;
     private ShipStatus shipStatus;
 
@@ -249,7 +257,7 @@ public class MerchantScreen extends Screen {
             throw new RuntimeException(e);
         }
     }
-    private void nextMerchantState() {
+    protected void nextMerchantState() {
         if (this.merchantState == 4)
             this.merchantState = 0; // from 'Coin Gain Up' to 'Go main'
         else
@@ -259,7 +267,7 @@ public class MerchantScreen extends Screen {
     /**
      * Shifts the focus to the previous menu item.
      */
-    private void previousMerchantState() {
+    protected void previousMerchantState() {
         if (this.merchantState == 0)
             this.merchantState = 4; //from 'Go main' to 'Coin Gain Up'
         else
