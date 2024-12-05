@@ -210,4 +210,12 @@ public class TutorialScreen extends Screen {
     private void drawScoringAndTips() {
         drawTextLines(TIPS, "Scoring & Tips");
     }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public static int getTotalPages() {
+        return TOTAL_PAGES;
+    }
 }
